@@ -1,0 +1,43 @@
+<header class="scroll_header_02">
+    <div class="inner-container">
+        <div class="logo"><a href="/website/AI_forum/index.shtml">
+            <img src="/website/AI_forum/img/logo_sp.png" alt="Logo" style="width: 300px; height: auto;">
+            <img src="/website/AI_forum/img/logo_sp.png" alt="Logo" class="second-class" style="width: 240px; height: auto;"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/website/AI_forum/index.shtml">ホーム</a></li>
+                <li><a href="/website/AI_forum/about.shtml">概要</a></li>
+                <li><a href="/website/AI_forum/blog.shtml">BLOG</a></li>
+                <li><a href="/website/AI_forum/form.shtml">連絡先</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <!--<div class="mailbox">
+        <a href="mailto:info@example.com"></a><img src="/website/AI_forum/img/mail.png" class="regular" alt="Mail"
+            style="width: 18px; height: auto;"><img src="/website/AI_forum/img/mail_hover.png" class="img_hover" alt="Mail"
+            style="width: 18px; height: auto;">
+        <div class="icon">CONTACT</div>
+    </div>-->
+    <div class="hamburger-menu-block">
+            <button class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="hamburger-menu-content">
+                <div class="logo_hamburger-menu">
+                    <img src="/website/AI_forum/img/logo_sp.png" alt="Logo" width="100%" height="auto">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/website/AI_forum/index.shtml">ホーム</a></li>
+                <li><a href="/website/AI_forum/about.shtml">概要</a></li>
+                <li><a href="/website/AI_forum/blog.shtml">BLOG</a></li>
+                <li><a href="/website/AI_forum/form.shtml">連絡先</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+</header>

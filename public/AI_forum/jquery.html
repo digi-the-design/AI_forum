@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript File Loading</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // メディアクエリの設定を行う
+        function mediaQueriesWin() {
+            var width = $(window).width();
+            if (width <= 960) { // 画面幅が960px以下の場合
+                $(".has-child>a").off('click'); // has-childクラスのaタグのクリックイベントを解除
+                $(".has-child>a").on('click', function () { // has-childクラスのaタグをクリックした場合
+                    var parentElem = $(this).parent(); // aタグの親要素<li>を取得
+                    $(parentElem).toggleClass('active'); // 親要素にactiveクラスを追加/削除
+                    $(parentElem).children('ul').stop().slideToggle(500); // 子要素の<ul>をスライド表示/非表示
+                    return false; // デフォルトのリンク動作を無効化
+                });
+            } else { // 画面幅が960px以上の場合
+                $(".has-child>a").off('click'); // has-childクラスのaタグのクリックイベントを解除
+                $(".has-child>a").removeClass('active'); // activeクラスを削除
+                $('.has-child').children('ul').css("display", ""); // 子要素の<ul>のdisplayプロパティをリセット
+            }
+        }
+
+        /*===========================================================*/
+        /* 固定アニメーション */
+        /*===========================================================*/
+
+        // 固定アニメーションの設定を行う
+        function FixedAnime() {
+            var elemTop = $('#service').offset().top; // #serviceの位置を取得
+            var scroll = $(window).scrollTop();
+
+            if (scroll <= 20) { // スクロール位置が20px以下の場合
+                $('#header').addClass('DownMove'); // DownMoveクラスを追加
+            } else if (scroll >= elemTop) {
+                $('#header').removeClass('UpMove'); // UpMoveクラスを削除
+                $('#header').addClass('DownMove'); // DownMoveクラスを追加
+            } else {
+                if ($('#header').hasClass('DownMove')) { // #headerにDownMoveクラスがある場合
+                    $('#header').removeClass('DownMove'); // DownMoveクラスを削除
+                    $('#header').addClass('UpMove'); // UpMoveクラスを追加
+                }
+            }
+        }
+
+        /*===========================================================*/
+        /* ナビゲーションの開閉 */
+        /*===========================================================*/
+
+        $(".g-nav-openbtn").click(function () { // ナビゲーションボタンをクリックした場合
+            $(this).toggleClass('active'); // ボタンにactiveクラスを追加/削除
+            $("#g-nav").toggleClass('panelactive'); // ナビゲーションにpanelactiveクラスを追加/削除
+        });
+
+        $("#g-nav a").click(function () { // ナビゲーション内のリンクをクリックした場合
+            $(".g-nav-openbtn").removeClass('active'); // ボタンのactiveクラスを削除
+            $("#g-nav").removeClass('panelactive'); // ナビゲーションのpanelactiveクラスを削除
+        });
+
+        /*===========================================================*/
+        /* フェードインエフェクト */
+        /*===========================================================*/
+
+        // フェードインエフェクトの設定を行う
+        function setFadeElement() {
+            var windowH = $(window).height(); // ウィンドウの高さを取得
+            var scroll = $(window).scrollTop(); // スクロール位置を取得
+
+            // コンテンツの位置を取得
+            var contentsTop = Math.round($('#contact').offset().top); // #contactの位置を取得
+            var contentsH = $('#contact').outerHeight(true); // #contactの高さを取得
+
+            // 2つ目のコンテンツの位置を取得
+            var contentsTop2 = Math.round($('#footer').offset().top); // #footerの位置を取得
+            var contentsH2 = $('#footer').outerHeight(true); // #footerの高さを取得
+
+            // フェードインエフェクトの設定
+            if (scroll + windowH >= contentsTop && scroll + windowH <= contentsTop + contentsH) {
+                $("#page-top").addClass("LeftMove"); // LeftMoveクラスを追加
+                $("#page-top").removeClass("RightMove"); // RightMoveクラスを削除
+                $(".hide-btn").removeClass("hide-btn"); // hide-btnクラスを削除
+            } else if (scroll + windowH >= contentsTop2 && scroll + windowH <= contentsTop2 + contentsH2) {
+                $("#page-top").addClass("LeftMove"); // LeftMoveクラスを追加
+                $("#page-top").removeClass("RightMove"); // RightMoveクラスを削除
+            } else {
+                if (!$(".hide-btn").length) { // hide-btnクラスがない場合
+                    $("#page-top").addClass("RightMove"); // RightMoveクラスを追加
+                    $("#page-top").removeClass("LeftMove"); // LeftMoveクラスを削除
+                }
+            }
+        }
+
+        // #page-topをクリックした場合の処理
+        $('#page-top').click(function () {
+            $('body,html').animate({
+                scrollTop: 0 // ページトップにスクロール
+            }, 500); // 500msでスクロール
+            return false; // デフォルトのリンク動作を無効化
+        });
+
+        /*===========================================================*/
+        /* タブ切り替え */
+        /*===========================================================*/
+
+        // タブ切り替えの処理
+        function GethashID(hashIDName) {
+            if (hashIDName) {
+                // タブの処理
+                $('.tab li').find('a').each(function () { // タブ内のaタグを検索
+                    var idName = $(this).attr('href'); // aタグのhref属性を取得
+                    if (idName == hashIDName) { // href属性が一致する場合
+                        var parentElm = $(this).parent(); // 親要素<li>を取得
+                        $('.tab li').removeClass("active"); // タブ内のactiveクラスを削除
+                        $(parentElm).addClass("active"); // 親要素にactiveクラスを追加
+                        // コンテンツの表示切り替え
+                        $(".area").removeClass("is-active"); // コンテンツのis-activeクラスを削除
+                        $(hashIDName).addClass("is-active"); // 対応するコンテンツにis-activeクラスを追加
+                    }
+                });
+            }
+        }
+
+        // タブをクリックした場合の処理
+        $('.tab a').on('click', function () {
+            var idName = $(this).attr('href'); // href属性を取得
+            GethashID(idName); // タブ切り替え処理を実行
+            return false; // デフォルトのリンク動作を無効化
+        });
+
+        // ページ読み込み時の処理
+        $(window).on('load', function () {
+            $('.tab li:first-of-type').addClass("active"); // 最初のタブにactiveクラスを追加
+            $('.area:first-of-type').addClass("is-active"); // 最初のコンテンツにis-activeクラスを追加
+            var hashName = location.hash; // URLのハッシュ部分を取得
+            GethashID(hashName); // タブ切り替え処理を実行
+        });
+
+        // タブをクリックした場合の処理
+        $('.tab a').on('click', function () {
+            var idName = $(this).attr('href'); // href属性を取得
+            GethashID(idName); // タブ切り替え処理を実行
+            return false; // デフォルトのリンク動作を無効化
+        });
+
+        /*===========================================================*/
+        /* 画像スライダー */
+        /*===========================================================*/
+
+        // 画像スライダーの設定
+        var windowwidth = window.innerWidth || document.documentElement.clientWidth || 0;
+        if (windowwidth > 768) {
+            var responsiveImage = [ // PC用の画像
+                { src: './img/main_01.jpg' },
+                { src: './img/main_02.jpg' },
+                { src: './img/main_03.jpg' }
+            ];
+        } else {
+            var responsiveImage = [ // モバイル用の画像
+                { src: './img/main_01_sp.jpg' },
+                { src: './img/main_02_sp.jpg' },
+                { src: './img/main_03_sp.jpg' }
+            ];
+        }
+
+        // Vegasプラグインの設定
+        $('#slider').vegas({
+            overlay: false, // オーバーレイを無効化
+            transition: 'fade2', // トランジション効果
+            transitionDuration: 1500, // トランジションの持続時間
+            delay: 2500, // スライドの遅延時間
+            animationDuration: 1000, // アニメーションの持続時間
+            animation: 'random', // アニメーション効果
+            slides: responsiveImage, // スライド画像
+            timer: false, // タイマーを無効化
+        });
+
+        /*===========================================================*/
+        /* 検索ボックスの開閉 */
+        /*===========================================================*/
+
+        // 検索ボックスを開く
+        $(".open-btn").click(function () {
+            $("#search-wrap").addClass('panelactive'); // 検索ボックスにpanelactiveクラスを追加
+            $('#search-text').focus(); // 検索ボックスにフォーカス
+        });
+
+        // 検索ボックスを閉じる
+        $(".close-btn").click(function () {
+            $("#search-wrap").removeClass('panelactive'); // 検索ボックスのpanelactiveクラスを削除
+        });
+
+        /*===========================================================*/
+        /* フェードインアニメーション */
+        /*===========================================================*/
+
+        // フェードインアニメーションの設定
+        function fadeAnime() {
+            // 背景が現れるアニメーション
+            $('.bgappearTrigger').each(function () {
+                var elemPos = $(this).offset().top - 50;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                if (scroll >= elemPos - windowHeight) {
+                    $(this).addClass('bgappear'); // bgappearクラスを追加
+                } else {
+                    $(this).removeClass('bgappear'); // bgappearクラスを削除
+                }
+            });
+            // 左右に広がるアニメーション
+            $('.bgLRextendTrigger').each(function () {
+                var elemPos = $(this).offset().top - 50;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                if (scroll >= elemPos - windowHeight) {
+                    $(this).addClass('bgLRextend'); // bgLRextendクラスを追加
+                } else {
+                    $(this).removeClass('bgLRextend'); // bgLRextendクラスを削除
+                }
+            });
+            // 右左に広がるアニメーション
+            $('.bgRLextendTrigger').each(function () {
+                var elemPos = $(this).offset().top - 50;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                if (scroll >= elemPos - windowHeight) {
+                    $(this).addClass('bgRLextend'); // bgRLextendクラスを追加
+                } else {
+                    $(this).removeClass('bgRLextend'); // bgRLextendクラスを削除
+                }
+            });
+            // サービスエリアのアニメーション
+            $('.service-area').each(function () {
+                var elemPos = $(this).offset().top - 50;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                if (scroll >= elemPos - windowHeight) {
+                    $(this).addClass('startwd'); // startwdクラスを追加
+                } else {
+                    $(this).removeClass('startwd'); // startwdクラスを削除
+                }
+            });
+        }
+
+        /*===========================================================*/
+        /* タイピングアニメーション */
+        /*===========================================================*/
+        var arr = []
+        // タイピングアニメーションの初期化
+        function TypingInit() {
+            $('.js_typing').each(function (i) {
+                arr[i] = new ShuffleText(this); // ShuffleTextオブジェクトを作成
+            });
+        }
+        // タイピングアニメーションの設定
+        function TypingAnime() {
+            $(".js_typing").each(function (i) {
+                var elemPos = $(this).offset().top - 50;
+                var scroll = $(window).scrollTop();
+                var windowHeight = $(window).height();
+                if (scroll >= elemPos - windowHeight) {
+                    if (!$(this).hasClass("endAnime")) { // endAnimeクラスがない場合
+                        arr[i].start(); // タイピングアニメーションを開始
+                        arr[i].duration = 800; // アニメーションの持続時間を設定
+                        $(this).addClass("endAnime"); // endAnimeクラスを追加
+                    }
+                } else {
+                    $(this).removeClass("endAnime"); // endAnimeクラスを削除
+                }
+            });
+        }
+
+        /*===========================================================*/
+        /* イベントリスナーの設定 */
+        /*===========================================================*/
+
+        // ウィンドウリサイズ時の処理
+        $(window).resize(function () {
+            mediaQueriesWin(); // メディアクエリの設定を再実行
+        });
+
+        // スクロール時の処理
+        $(window).scroll(function () {
+            FixedAnime(); // 固定アニメーションの設定を再実行
+            setFadeElement(); // フェードインエフェクトの設定を再実行
+            fadeAnime(); // フェードインアニメーションの設定を再実行
+            TypingInit(); // タイピングアニメーションの初期化を再実行
+            TypingAnime(); // タイピングアニメーションの設定を再実行
+        });
+
+        // ページ読み込み時の処理
+        $(window).on('load', function () {
+            $("#splash-logo").delay(1200).fadeOut('slow'); // ロゴをフェードアウト
+
+            // スプラッシュ画面をフェードアウト
+            $("#splash").delay(1500).fadeOut('slow', function () {
+                $('body').addClass('appear'); // bodyにappearクラスを追加
+
+                mediaQueriesWin(); // メディアクエリの設定を再実行
+                FixedAnime(); // 固定アニメーションの設定を再実行
+                setFadeElement(); // フェードインエフェクトの設定を再実行
+
+                // タブ切り替えの処理を再実行
+                var hashName = location.hash;
+                GethashID(hashName);
+            });
+
+            // スプラッシュ画面のアニメーション終了時の処理
+            $('.splashbg').on('animationend', function () {
+                fadeAnime(); // フェードインアニメーションの設定を再実行
+                $(".endAnime").removeClass("endAnime"); // endAnimeクラスを削除
+                TypingInit(); // タイピングアニメーションの初期化を再実行
+                TypingAnime(); // タイピングアニメーションの設定を再実行
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <script>
+
+    </script>
+
+</body>
+
+</html>
