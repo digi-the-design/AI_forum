@@ -23,3 +23,5 @@ out/
 
 # PSD files (optional)
 *.psd
+# AI forum folder
+public/AI_forum/
