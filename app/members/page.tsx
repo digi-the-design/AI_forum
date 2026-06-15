@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { getMembersList, Member } from "../_libs/microcms";
+import { MEMBERS_LIST_LIMIT } from "../_constants";
 import styles from "./page.module.css";
-
+/*
 const data = {
   contents: [
     {
@@ -40,9 +42,13 @@ const data = {
         "先進技術の研究開発と製品イノベーションの分野で優れた経歴を持つテクノロジーエキスパート。以前は、大手テクノロジー企業の研究開発部門で主任エンジニアとして勤務し、革新的な製品の開発に携わった。最新の技術トレンドに精通し、当社の製品ポートフォリオを革新的かつ競争力のあるものにするためにリサーチと開発をリードしている。",
     },
   ],
-};
-
-export default function Page() {
+};*/
+// ⬛︎ APIからデータを取得する非同期処理を含む関数をインポート
+export default async function Page() {
+  // awaitで非同期処理を待ち、取得したデータをdataに格納
+  //microCMSのAPIからデータを非同期通信で取得するgetMembersList関数を呼び出し、引数に{limit: 100}を渡している。引数に渡された数値はマジックナンバーで、APIから取得するデータの最大数を指定している。ここでは、最大100件のデータを取得するように指定している。
+  const data = await getMembersList({ limit: MEMBERS_LIST_LIMIT });
+  // 取得したデータをコンソールに出力
   return (
     <div className={styles.container}>
       {/* データがない場合の処理 三項演算子　*/}

@@ -7,7 +7,7 @@ import Footer from "./_components/Footer";
 
 //型別の書き方で説明：type Props = { children: React.ReactNode; }; export default function RootLayout({ children }: Props) {〜}
 
-export default function RootLayout({
+export default function name({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (

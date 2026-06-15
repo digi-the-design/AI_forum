@@ -19,13 +19,24 @@ export default function NewsList({ news }: Props) {
         <li key={article.id} className={styles.list}>
           <Link href={`/news/${article.id}`} className={styles.link}>
             <div className={styles.link}>
-              <Image
-                src="/no-image.png"
-                alt="No image"
-                width={1200}
-                height={630}
-                className={styles.image}
-              />
+              {/* もしarticle.thumbnailが存在する場合は、そのURLを使用して画像を表示し、存在しない場合は代わりにno-image.pngを表示する条件式（三項演算子）を使用している。これにより、記事にサムネイル画像がない場合でも、適切な代替画像が表示されるようになっている。*/}
+              {article.thumbnail ? (
+                <Image
+                  src={article.thumbnail.url}
+                  alt={article.title}
+                  width={1200}
+                  height={630}
+                  className={styles.image}
+                />
+              ) : (
+                <Image
+                  src="/no-image.png"
+                  alt="No image"
+                  width={1200}
+                  height={630}
+                  className={styles.image}
+                />
+              )}
               <dl className={styles.content}>
                 <dt className={styles.newsItemTitle}>{article.title}</dt>
                 <dd className={styles.meta}>
