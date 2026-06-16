@@ -23,6 +23,9 @@ import { News } from "@/app/_libs/microcms";
 //}
 //],
 //};
+// app/page.tsx の一番上、または適切な場所に追記
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   //name変数に文字列を代入 ※h1タグ内で使用中
   const name = "世界";
