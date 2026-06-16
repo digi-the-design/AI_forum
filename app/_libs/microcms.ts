@@ -48,8 +48,8 @@ if (!process.env.MICROCMS_API_KEY) {
 }
 // createClient関数を使用して、microCMSクライアント（ドメイン/APIキー）を作成し格納
 const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: process.env.MICROCMS_API_KEY,
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN || "gamnmsnxo6",
+  apiKey: process.env.MICROCMS_API_KEY || "",
 });
 
 // ⬛︎ APIからメンバーのリストを取得する関数を定義
