@@ -4,6 +4,7 @@ import { Suspense } from "react";
 // 検索フィールドのコンポーネントをインポート
 import SearchFieldComponent from "./SearchFieldComponent";
 
+export const dynamic = "force-dynamic";
 // ⬛︎ Suspenseコンポーネントで非同期コンポーネントの読み込みを待機
 export default function SearchField() {
   return (

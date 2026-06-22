@@ -17,6 +17,7 @@ type Props = {
 // ⬛︎ Next.JS 15からのの仕様変更・修正
 // ページコンポーネントは非同期関数として定義されデータの取得や処理をページコンポーネント内で直接行うことができる
 
+export const dynamic = "force-dynamic";
 // ⬛︎ microCMSのAPIにクエリパラメータを渡して、特定のカテゴリに属するニュース記事を取得
 export default async function Page({ params }: Props) {
   // データを受取るまでawaitで待ちid属性を分割代入

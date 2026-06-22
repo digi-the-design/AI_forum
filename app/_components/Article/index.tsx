@@ -9,6 +9,7 @@ type Props = {
   data: News;
 };
 
+export const dynamic = "force-dynamic";
 export default function Article({ data }: Props) {
   return (
     <main>

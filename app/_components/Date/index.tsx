@@ -5,6 +5,8 @@ import { formatDate } from "@/app/_libs/utils";
 type Props = {
   date: string;
 };
+
+export const dynamic = "force-dynamic";
 //dateプロパティをデストラクチャリング（分割代入）の構文{ date }で抽出し、string型の変数date作成
 export default function Date({ date }: Props) {
   return (

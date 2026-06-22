@@ -8,6 +8,8 @@ import Link from "next/link";
 type Props = {
   news: News[];
 };
+
+export const dynamic = "force-dynamic";
 //Props型のnewsプロパティをデストラクチャリング（分割代入）の構文{ news }で抽出し、News型の配列を新しい変数newsとして使う
 export default function NewsList({ news }: Props) {
   if (news.length === 0) {

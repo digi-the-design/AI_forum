@@ -43,6 +43,8 @@ const data = {
     },
   ],
 };*/
+export const dynamic = "force-dynamic";
+
 // ⬛︎ APIからデータを取得する非同期処理を含む関数をインポート
 export default async function Page() {
   // awaitで非同期処理を待ち、取得したデータをdataに格納
