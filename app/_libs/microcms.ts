@@ -63,9 +63,6 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
     endpoint: "members",
     // クエリパラメータを指定
     queries,
-    customRequestInit: {
-      cache: "no-store", //詳細ページ側にもこれを適用
-    },
   });
   return listData;
   // ⬛︎ APIからデータを取得する一連の流れを説明

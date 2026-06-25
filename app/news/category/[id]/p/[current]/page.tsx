@@ -19,7 +19,6 @@ type Props = {
 };
 
 // app/page.tsx の一番上、または適切な場所に追記
-export const dynamic = "force-dynamic";
 export default async function Page({ params }: Props) {
   // クエリパラメータから現在のページ番号を取得
   // 文字列を整数に変換するためにparseInt関数を使用。10は10進数であることを指定

@@ -11,7 +11,6 @@ type Props = {
   basePath?: string;
 };
 
-export const dynamic = "force-dynamic";
 // ⬛︎ 第二引数current = 1は、親コンポーネントからcurrentプロパティが渡されない場合の値を1に設定
 export default function Pagination({
   totalCount,

@@ -15,7 +15,6 @@ type Props = {
 };
 
 // app/page.tsx の一番上、または適切な場所に追記
-export const dynamic = "force-dynamic";
 export default async function Page({ params, searchParams }: Props) {
   // データを受取るまでawaitで解決しslug属性に分割代入
   const { slug } = await params;

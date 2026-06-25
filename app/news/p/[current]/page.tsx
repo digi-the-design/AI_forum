@@ -17,7 +17,6 @@ type Props = {
   // Next.jsが渡すURLは文字列の為、currentはstring型で定義
   params: Promise<{ current: string }>;
 };
-export const dynamic = "force-dynamic";
 export default async function Page({ params }: Props) {
   // クエリパラメータから現在のページ番号を取得
   // 文字列を整数に変換するためにparseInt関数を使用。10は10進数であることを指定

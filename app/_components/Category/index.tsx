@@ -6,7 +6,6 @@ type Props = {
   category: Category;
 };
 
-export const dynamic = "force-dynamic";
 export default function Category({ category }: Props) {
   return <span className={styles.tag}>{category.name}</span>;
 }
