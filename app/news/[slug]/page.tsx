@@ -12,6 +12,7 @@ type Props = {
 // export const revalidate = 0;
 // ⬛︎ ページを動的：ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
 // export const revalidate = 60;
+export const dynamic = "force-static";
 
 // app/page.tsx の一番上、または適切な場所に追記
 export default async function Page({ params, searchParams }: Props) {
