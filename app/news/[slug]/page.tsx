@@ -18,12 +18,15 @@ export const dynamic = "force-static";
 export default async function Page({ params, searchParams }: Props) {
   // params.slugに記事IDが入る
   const slug = params.slug;
+  if (!slug) notFound();
   // searchParams.draftKeyにドラフトキーが入る
   const draftKey = searchParams.draftKey;
+
   // microCMS側URL設定:{CONTENT_ID}?dk={DRAFT_KEY} をコード化:(slug,{draftkey:dk})
   const data = await getNewsDetail(slug, {
     draftKey,
-  }).catch(notFound);
+  });
+  if (!data) notFound();
   //記事：Articleコンポーネント・一覧に戻るボタン：ButtonLinkコンポーネント追加
   return (
     <>
