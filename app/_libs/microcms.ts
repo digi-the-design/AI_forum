@@ -108,11 +108,6 @@ export const getNewsDetail = async (
       fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
       ...(queries?.draftKey && { draftKey: queries.draftKey }),
     },
-    customRequestInit: {
-      next: {
-        revalidate: queries?.draftKey === undefined ? 60 : 0,
-      },
-    },
   });
   return detailData;
 };
