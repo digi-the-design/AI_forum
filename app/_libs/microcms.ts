@@ -107,7 +107,11 @@ export const getNewsDetail = async (
     queries: {
       fields: "id,title,content,thumbnail,category,name,publishedAt", //取得するフィールドを指定
     },
-    //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
+    customRequestInit: {
+      next: {
+        revalidate: queries?.draftKey === undefined ? 60 : 0,
+      },
+    },
   });
   return detailData;
 };
