@@ -106,8 +106,8 @@ export const getNewsDetail = async (
     contentId, //取得する記事のID
     queries: {
       fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
-      ...(queries?.draftKey && { draftKey: queries.draftKey }),
     },
+    //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return detailData;
 };
