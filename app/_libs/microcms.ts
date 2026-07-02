@@ -62,8 +62,11 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
     // APIのエンドポイントを指定
     endpoint: "members",
     // クエリパラメータを指定
-    queries,
-    // customRequestInit: { cache: "no-store",},
+    queries: {
+      fields: "id,position,profile,image,name", //取得するフィールドを指定
+      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+      // customRequestInit: { cache: "no-store",},
+    },
   });
   return listData;
   // ⬛︎ APIからデータを取得する一連の流れを説明
@@ -84,9 +87,10 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
 export const getNewsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<News>({
     endpoint: "news",
-    queries,
-    customRequestInit: {
-      cache: "no-store",
+    queries: {
+      //APIのクエリパラメータを追加取得（fields, draftKey...）
+      fields: "id,title,thumbnail,category,name,publishedAt", //取得するフィールドを指定
+      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
     },
   });
   return listData;
@@ -100,13 +104,14 @@ export const getNewsDetail = async (
   const detailData = await client.getListDetail<News>({
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
-    queries, //APIのクエリパラメータを追加取得（fields, draftKey...）
-    customRequestInit: {
-      cache: "no-store", //詳細ページ側にもこれを適用
+    queries: {
+      fields: "id,title,content,thumbnail,category,name,publishedAt", //取得するフィールドを指定
     },
+    //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return detailData;
 };
+
 // ⬛︎ microcmsから記事データを取得する関数一覧
 // getList リスト型コンテンツの「一覧（複数件）」を取得
 // getListDetail リスト型コンテンツの「詳細1件」を取得
@@ -120,10 +125,11 @@ export const getCategoryList = async (
   const listData = await client.getListDetail<Category>({
     endpoint: "categories", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
-    queries, //APIのクエリパラメータを追加取得（fields, draftKey...）
-    customRequestInit: {
-      cache: "no-store", //詳細ページ側にもこれを適用
+    queries: {
+      fields: "name", //取得するフィールドを指定
+      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
     },
+    //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return listData;
 };

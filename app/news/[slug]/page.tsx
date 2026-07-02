@@ -14,6 +14,9 @@ type Props = {
   searchParams: Promise<{ dk?: string }>;
 };
 
+//ページをSSRに変更
+export const revalidate = 60;
+
 // app/page.tsx の一番上、または適切な場所に追記
 export default async function Page({ params, searchParams }: Props) {
   // データを受取るまでawaitで解決しslug属性に分割代入
