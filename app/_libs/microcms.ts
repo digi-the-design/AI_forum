@@ -105,7 +105,8 @@ export const getNewsDetail = async (
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
     queries: {
-      fields: "id,title,content,thumbnail,category,name,publishedAt", //取得するフィールドを指定
+      fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
+      ...(queries?.draftKey && { draftKey: queries.draftKey }),
     },
     customRequestInit: {
       next: {

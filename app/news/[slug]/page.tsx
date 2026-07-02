@@ -23,12 +23,12 @@ export const revalidate = 60;
 // app/page.tsx の一番上、または適切な場所に追記
 export default async function Page({ params, searchParams }: Props) {
   // データを受取るまでawaitで解決しslug属性に分割代入
-  const { slug } = await params;
+  const slug = (await params).slug;
   // データを受取るまでawaitで解決しdk属性に分割代入
-  const { dk } = await searchParams;
+  const draftKey = (await searchParams).dk;
   // microCMS側URL設定:{CONTENT_ID}?dk={DRAFT_KEY} をコード化:(slug,{draftkey:dk})
   const data = await getNewsDetail(slug, {
-    draftKey: dk,
+    draftKey,
   }).catch(notFound);
   //記事：Articleコンポーネント・一覧に戻るボタン：ButtonLinkコンポーネント追加
   return (
