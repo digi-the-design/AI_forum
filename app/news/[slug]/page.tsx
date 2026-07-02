@@ -5,20 +5,20 @@ import ButtonLink from "@/app/_components/ButtonLink";
 import styles from "./page.module.css";
 type Props = {
   params: { slug: string };
-  searchParams: { dk?: string };
+  searchParams: { draftKey?: string };
 };
 
 // ⬛︎ ページを動的：SSR（Server Side Rendering）に変更してmicroCMS即時反映（キャッシュなし）
 // export const revalidate = 0;
 // ⬛︎ ページを動的：ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
-export const dynamic = "force-dynamic";
+// export const revalidate = 60;
 
 // app/page.tsx の一番上、または適切な場所に追記
 export default async function Page({ params, searchParams }: Props) {
   // params.slugに記事IDが入る
   const slug = params.slug;
-  // searchParams.dkにドラフトキーが入る
-  const draftKey = searchParams.dk;
+  // searchParams.draftKeyにドラフトキーが入る
+  const draftKey = searchParams.draftKey;
   // microCMS側URL設定:{CONTENT_ID}?dk={DRAFT_KEY} をコード化:(slug,{draftkey:dk})
   const data = await getNewsDetail(slug, {
     draftKey,
