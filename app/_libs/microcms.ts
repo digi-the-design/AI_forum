@@ -106,7 +106,7 @@ export const getNewsDetail = async (
     contentId, //取得する記事のID
     queries: {
       fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
-      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+      
     },
     customRequestInit: {
       next: {
