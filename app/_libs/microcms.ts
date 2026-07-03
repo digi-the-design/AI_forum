@@ -133,7 +133,7 @@ export const getCategoryList = async (
     contentId, //取得する記事のID
     queries: {
       fields: "name", //取得するフィールドを指定
-      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filters, draftKey など)
     },
     //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
