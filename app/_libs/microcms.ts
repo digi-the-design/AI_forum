@@ -105,9 +105,20 @@ export const getNewsDetail = async (
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
     queries: {
-      fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
-      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+      //取得するフィールドを指定
+      fields: "id,title,content,thumbnail,category,publishedAt",
+      ...queries, // 呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+      // ...queries に含まれる代表的な指定（全部 microCMS のクエリ）
+      // draftKey（プレビュー用）
+      // limit（取得件数）
+      // offset（ページネーション）
+      // filters（絞り込み）
+      // orders（並び順）
+      // q（全文検索）
+      // depth（リレーションの深さ）
+      // ids（複数 ID 指定）
     },
+    // 60秒間キャッシュする設定を追加。draftKeyが指定されていない場合は60秒間キャッシュし、指定されている場合はキャッシュせずに即時反映する
     customRequestInit: {
       next: {
         revalidate: queries?.draftKey === undefined ? 60 : 0,
