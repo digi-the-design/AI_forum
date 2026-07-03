@@ -28,7 +28,7 @@ export type News = {
   description: string;
   content: string;
   thumbnail?: MicroCMSImage;
-  category: Category;
+  category?: Category;
 } & MicroCMSListContent; // News型は、title, description, content, categoryプロパティを持ち、さらにMicroCMSListContent型のプロパティも含む
 //　以下NewList/index.tsxで使用している引数名articleと各キープロパティ
 // article.id
@@ -104,7 +104,9 @@ export const getNewsDetail = async (
   const detailData = await client.getListDetail<News>({
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
-    queries,
+    queries: {
+      fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
+    },
     customRequestInit: {
       next: {
         revalidate: queries?.draftKey === undefined ? 60 : 0,

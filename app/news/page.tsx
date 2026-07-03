@@ -9,7 +9,7 @@ import SearchField from "../_components/SearchField";
 
 // ⬛︎ ページを動的：ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
 // export const revalidate = 60;は見た目はSTATIC（静的）だが、実際はSSR（動的）でmicroCMSのデータを取得するため、キャッシュが60秒間有効になる。これにより、ページの表示速度を向上させつつ、最新のデータを取得できるようになる。
-export const revalidate = 60;
+// export const revalidate = 60;
 
 // app/page.tsx の一番上、または適切な場所に追記
 export default async function Page() {
