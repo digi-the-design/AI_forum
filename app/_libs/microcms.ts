@@ -106,7 +106,13 @@ export const getNewsDetail = async (
     contentId, //取得する記事のID
     queries: {
       fields: "id,title,content,thumbnail,category,publishedAt", //取得するフィールドを指定
-    } //詳細ページ側にもこれを適用
+      ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
+    },
+    customRequestInit: {
+      next: {
+        revalidate: queries?.draftKey === undefined ? 60 : 0,
+      },
+    }, //詳細ページ側にもこれを適用
     //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return detailData;
