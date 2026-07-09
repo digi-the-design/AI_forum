@@ -12,6 +12,9 @@ const nextConfig = {
       },
     ],
   },
+  turbopack: {
+    root: "/Users/sasakirikiya/Sites/main_project01/nextjs-website-main",
+  },
 };
 
 export default nextConfig;
