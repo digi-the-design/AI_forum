@@ -12,8 +12,9 @@ const nextConfig = {
       },
     ],
   },
+  // Basic認証を有効にするための設定
   turbopack: {
-    root: "/Users/sasakirikiya/Sites/main_project01/nextjs-website-main",
+    root: "/Users/sasakirikiya/Sites/next-react-website_project01/nextjs-website-main",
   },
 };
 
