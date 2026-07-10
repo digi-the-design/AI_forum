@@ -13,7 +13,7 @@ import { TOP_NEWS_LIMIT } from "@/app/_constants";
 // SSR（Server Side Rendering）に変更してmicroCMS即時反映（キャッシュなし）
 // export const revalidate = 0;
 // ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
-// export const revalidate = 60;
+export const revalidate = 60;
 
 export default async function Home() {
   // name変数に文字列を代入 ※h1タグ内で使用中
@@ -28,7 +28,7 @@ export default async function Home() {
       <section className={styles.top}>
         <div>
           <h1 className={styles.title}>
-            テクノロジーの力で
+            テクノロジーの力でね
             {name}を変える
           </h1>
           <p className={styles.description}>
