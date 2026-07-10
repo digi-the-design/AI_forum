@@ -8,7 +8,12 @@ import { TOP_NEWS_LIMIT } from "@/app/_constants";
 // data:{ プロパティ: 型注釈の要素を持つ配列 }という書き方。
 // dataがcontentsというプロパティを持つオブジェクトであり、そのcontentsプロパティがNews型の配列であることを示している。
 // const data: { contents: News[] } = {contents: [{id: "1",title: "渋谷にオフィスを移転しました",category: {name: "更新情報",},publishedAt: "2023/05/19",createdAt: "2023/05/19",}],};
-export const dynamic = "force-dynamic";
+
+// ⬛︎ News配下のページ共通でキャッシュを60秒間有効にする設定を追加。これにより、ページの表示速度を向上させつつ、最新のデータを取得できるようになる
+// SSR（Server Side Rendering）に変更してmicroCMS即時反映（キャッシュなし）
+// export const revalidate = 0;
+// ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
+// export const revalidate = 60;
 
 export default async function Home() {
   // name変数に文字列を代入 ※h1タグ内で使用中
