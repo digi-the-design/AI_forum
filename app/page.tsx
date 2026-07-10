@@ -8,6 +8,7 @@ import { TOP_NEWS_LIMIT } from "@/app/_constants";
 // data:{ プロパティ: 型注釈の要素を持つ配列 }という書き方。
 // dataがcontentsというプロパティを持つオブジェクトであり、そのcontentsプロパティがNews型の配列であることを示している。
 // const data: { contents: News[] } = {contents: [{id: "1",title: "渋谷にオフィスを移転しました",category: {name: "更新情報",},publishedAt: "2023/05/19",createdAt: "2023/05/19",}],};
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   // name変数に文字列を代入 ※h1タグ内で使用中
