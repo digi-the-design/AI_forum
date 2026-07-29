@@ -1,38 +1,36 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { createNextAuthMiddleware } from "nextjs-basic-auth-middleware";
 
+// Basic認証用のハンドラー関数を生成
+const authHandler = createNextAuthMiddleware();
+
+/**
+ * Next.js 16 仕様のプロキシ関数
+ *
+ * 【注意】Next.js 16以降、従来の `middleware.ts` 構文は非推奨となり、
+ * ファイル名を `proxy.ts`、関数名を `proxy` に変更することが必須となりました。
+ * 必ずこのように `export function proxy` の形式で関数を明示する必要があります。
+ */
 export function proxy(request: NextRequest) {
-  // 1. 環境変数からユーザー名とパスワードを取得 (なければデフォルト値)
-  // 💡 Vercelの「Environment Variables」に設定している値、または直接ここに文字を書いてもOKです
-  const BASIC_AUTH_USER = process.env.BASIC_AUTH_USER || "your_username";
-  const BASIC_AUTH_PASSWORD =
-    process.env.BASIC_AUTH_PASSWORD || "your_password";
-
-  // 2. リクエストヘッダーからブラウザの入力情報を取得
-  const authHeader = request.headers.get("authorization");
-
-  if (authHeader) {
-    // Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ= の形式から文字を抜き出す
-    const authValue = authHeader.split(" ")[1];
-    const [user, password] = Buffer.from(authValue, "base64")
-      .toString()
-      .split(":");
-
-    // ユーザー名とパスワードが一致した場合は、認証をスルーしてページを表示
-    if (user === BASIC_AUTH_USER && password === BASIC_AUTH_PASSWORD) {
-      return NextResponse.next();
-    }
-  }
-
-  // 3. 一致しない、または未入力の場合は「401 Unauthorized（認証画面）」をブラウザに返却
-  return new NextResponse("Authentication Required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="Secure Area"',
-    },
-  });
+  // エラーチェック用コンソール
+  console.log("PROXY HIT:", request.nextUrl.pathname);
+  // 💡 【重要】authHandler の実行結果を必ず「return」してNext.jsに返却してください。
+  // return を忘れると、認証エラー（401 Unauthorized）のレスポンスがブラウザに伝わらず、
+  // Basic認証のポップアップが出ずに処理が素通りしてしまいます。
+  return authHandler(request);
 }
 
-// 💡 /news とその配下だけを厳格に対象に指定
+/**
+ * プロキシを適用するルーティングの設定
+ *
+ * 指定したパス（ここでは /news とその配下のすべてのページ）に
+ * アクセスがあった場合のみ、上記の Basic認証（proxy関数）が実行されます。
+ */
 export const config = {
-  matcher: ["/news", "/news/:path*"],
+  matcher: [
+    "/news",
+    "/news/:path*",
+    // ② 以下の設定を追加（トップページや静的ファイル、Next.jsの内部ファイルを絶対に除外する）
+    // "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|$).*)",
+  ],
 };
