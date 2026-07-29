@@ -18,9 +18,7 @@ const nextConfig = {
     ],
   },
   // Basic認証を有効にするための設定
-  turbopack: {
-    root: __dirname,
-  },
+  // turbopack: { root: __dirname,},
 };
 
 export default nextConfig;

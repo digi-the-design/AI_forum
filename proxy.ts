@@ -26,5 +26,10 @@ export function proxy(request: NextRequest) {
  * アクセスがあった場合のみ、上記の Basic認証（proxy関数）が実行されます。
  */
 export const config = {
-  matcher: ["/news", "/news/:path*"],
+  matcher: [
+    "/news",
+    "/news/:path*",
+    // ② 以下の設定を追加（トップページや静的ファイル、Next.jsの内部ファイルを絶対に除外する）
+    // "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|$).*)",
+  ],
 };
