@@ -27,8 +27,8 @@ export function proxy(request: NextRequest) {
  */
 export const config = {
   matcher: [
-    "/news",
     "/news/:path*",
+    "/news"
     // ② 以下の設定を追加（トップページや静的ファイル、Next.jsの内部ファイルを絶対に除外する）
     // "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|$).*)",
   ],
