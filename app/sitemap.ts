@@ -3,7 +3,7 @@ import { getAllCategoryList, getAllNewsList } from "./_libs/microcms";
 
 // Sitemap用URL生成
 const buildUrl = (path?: string) =>
-  `http://https://nextjs-website-lhx7bm49n-rikiyas-projects.vercel.app/${path ?? ""}`;
+  `http://nextjs-website-lhx7bm49n-rikiyas-projects.vercel.app/${path ?? ""}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const newsContents = await getAllNewsList();
