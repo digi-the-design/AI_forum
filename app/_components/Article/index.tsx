@@ -4,7 +4,7 @@ import type { News } from "@/app/_libs/microcms";
 import Date from "../Date";
 import Category from "../Category";
 import styles from "./index.module.css";
-
+import parse from "html-react-parser";
 type Props = {
   data: News;
 };
@@ -33,12 +33,7 @@ export default function Article({ data }: Props) {
         />
       )}
       {/* 不正なHTMLアクセスの可能性があることを警告している。dagerouslySetInnerHTML */}
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{
-          __html: data.content,
-        }}
-      />
+      <div className={styles.content}>{parse(data.content)}</div>
     </main>
   );
 }

@@ -89,7 +89,7 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
     endpoint: "news",
     queries: {
       //APIのクエリパラメータを追加取得（fields, draftKey...）
-      fields: "id,title,thumbnail,category,name,publishedAt", //取得するフィールドを指定
+      fields: "id,title,thumbnail,category,name,publishedAt,description", //取得するフィールドを指定
       ...queries, //呼び出し側の条件を反映(limit, offset, orders, filtersなど)
     },
   });
@@ -101,14 +101,20 @@ export const getNewsDetail = async (
   contentId: string,
   queries?: MicroCMSQueries,
 ) => {
+  // 💡 Next.js 16: 下書き(draftKey)がない通常時のみ関数ごとキャッシュする
+  if (queries?.draftKey === undefined || queries?.draftKey === "") {
+    ("use cache");
+    // 💡 必要に応じてキャッシュの有効期限（60秒など）を設定
+    // ※Next.js 16の提供する cacheLife などの新APIで制御可能
+  }
   const detailData = await client.getListDetail<News>({
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
     queries: {
       //取得するフィールドを指定
-      fields: "id,title,content,thumbnail,category,publishedAt",
+      fields: "id,title,content,thumbnail,category,publishedAt,description",
       ...queries, // 呼び出し側の条件を反映(limit, offset, orders, filtersなど)
-      // ...queries に含まれる代表的な指定（全部 microCMS のクエリ）
+      // ...queries に含まれる代表的な指定（microCMS のクエリ）
       // draftKey（プレビュー用）
       // limit（取得件数）
       // offset（ページネーション）
@@ -118,13 +124,6 @@ export const getNewsDetail = async (
       // depth（リレーションの深さ）
       // ids（複数 ID 指定）
     },
-    // 60秒間キャッシュする設定を追加。draftKeyが指定されていない場合は60秒間キャッシュし、指定されている場合はキャッシュせずに即時反映する
-    customRequestInit: {
-      next: {
-        revalidate: queries?.draftKey === undefined ? 60 : 0,
-      },
-    }, //詳細ページ側にもこれを適用
-    //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return detailData;
 };
@@ -149,4 +148,16 @@ export const getCategoryList = async (
     //customRequestInit: {cache: "no-store", //詳細ページ側にもこれを適用},
   });
   return listData;
+};
+export const getCategoryDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries,
+) => {
+  const detailData = await client.getListDetail<Category>({
+    endpoint: "categories",
+    contentId,
+    queries,
+  });
+
+  return detailData;
 };

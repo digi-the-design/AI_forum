@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getNewsDetail } from "@/app/_libs/microcms";
 import Article from "@/app/_components/Article";
 import ButtonLink from "@/app/_components/ButtonLink";
@@ -12,6 +13,31 @@ type Props = {
   params: Promise<{ slug: string }>;
   // microCMSのプレビュー機能対応。クエリパラメータを受け取るための型定義
   searchParams: Promise<{ dk?: string }>;
+};
+
+// メタデータ用
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
+  // データを受取るまでawaitで解決しslug属性に分割代入
+  const { slug } = await params;
+  // データを受取るまでawaitで解決しdk属性に分割代入
+  const { dk } = await searchParams;
+  // microCMS側URL設定:{CONTENT_ID}?dk={DRAFT_KEY} をコード化:(slug,{draftkey:dk})
+  const data = await getNewsDetail(slug, {
+    draftKey: dk,
+  });
+
+  return {
+    title: data.title,
+    description: data.description,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      images: [data?.thumbnail?.url ?? ""],
+    },
+  };
 };
 
 // app/page.tsx の一番上、または適切な場所に追記

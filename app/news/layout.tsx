@@ -1,5 +1,9 @@
 import Sheet from "@/app/_components/Sheet";
 import Hero from "@/app/_components/Hero";
+// 共通Metadataに追加
+export const metadata = {
+  title: "ニュース",
+};
 
 //共通Reactの型定義
 type Props = {
@@ -10,7 +14,8 @@ type Props = {
 // SSR（Server Side Rendering）に変更してmicroCMS即時反映（キャッシュなし）
 // export const revalidate = 0;
 // ISR（Incremental Static Regeneration）に変更してmicroCMS反映遅延60秒（キャッシュあり）
-export const revalidate = 60;
+//export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default function NewsLayout({ children }: Props) {
   return (

@@ -92,6 +92,7 @@ export async function createContactData(_prevState: any, formData: FormData) {
       body: JSON.stringify({
         // fields配列内に各フォーム項目（姓、名、会社名、メールアドレス、メッセージ）とその値を設定
         fields: [
+          // 以下javaScriptオブジェクト{}で各フォーム項目の情報を設定
           // 姓
           {
             // HubSpotフォームの各項目のIDを設定

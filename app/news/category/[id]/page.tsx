@@ -1,4 +1,4 @@
-import { getCategoryList, getNewsList } from "@/app/_libs/microcms";
+import { getCategoryDetail, getNewsList } from "@/app/_libs/microcms";
 import { notFound } from "next/navigation";
 import NewsList from "@/app/_components/NewsList";
 import Category from "@/app/_components/Category";
@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
   const { id } = await params;
 
   // getCategoryList()で不正チェックとid取得。idに不正な値が入った場合はnotFoundページを表示する
-  const category = await getCategoryList(id).catch(notFound);
+  const category = await getCategoryDetail(id).catch(notFound);
 
   // ⬛︎ カテゴリーに属するニュース一覧をgetNewsList()で取得
   // contents は microCMSの返り値で固定のプロパティ名。{ contents: [...], (記事データの配列が入る) }
