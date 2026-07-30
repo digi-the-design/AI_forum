@@ -52,6 +52,12 @@ const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY || "",
 });
 
+// ⬛︎ microcmsから記事データを取得する関数一覧
+// getList リスト型コンテンツの「一覧（複数件）」を取得
+// getListDetail リスト型コンテンツの「詳細1件」を取得
+// get シングル型コンテンツを取得
+// getAllContents 全てのコンテンツを取得
+
 // ⬛︎ APIからメンバーのリストを取得する関数を定義
 // asyncで非同期関数を定義し、引数queriesはMicroCMSQueries型でオプション
 export const getMembersList = async (queries?: MicroCMSQueries) => {
@@ -83,7 +89,7 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
   // await client.getList<Member>()　microCMSから返信が届いたら、次の処理をする
 };
 
-// ⬛︎ APIからニュースのリストを取得する関数を定義
+// ⬛︎ APIからニュースのリストを取得する関数を定義（100件まで）
 export const getNewsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<News>({
     endpoint: "news",
@@ -128,12 +134,7 @@ export const getNewsDetail = async (
   return detailData;
 };
 
-// ⬛︎ microcmsから記事データを取得する関数一覧
-// getList リスト型コンテンツの「一覧（複数件）」を取得
-// getListDetail リスト型コンテンツの「詳細1件」を取得
-// get シングル型コンテンツを取得
-
-// ⬛︎ params.idに不正な値が入った場合のエラー処理
+// ⬛︎ APIからカテゴリーのリストを取得する関数を定義（100件まで）
 export const getCategoryList = async (
   contentId: string,
   queries?: MicroCMSQueries,
@@ -149,6 +150,8 @@ export const getCategoryList = async (
   });
   return listData;
 };
+
+// ⬛︎ APIからカテゴリー詳細を取得する関数を定義
 export const getCategoryDetail = async (
   contentId: string,
   queries?: MicroCMSQueries,
@@ -161,7 +164,8 @@ export const getCategoryDetail = async (
 
   return detailData;
 };
-//sitemap生成用に全てのmicorcmsページ情報を読み込む
+
+// ⬛︎ APIから全てのNewsデータを取得する関数を定義
 export const getAllNewsList = async () => {
   const listData = await client.getAllContents<News>({
     endpoint: "news",
@@ -170,6 +174,7 @@ export const getAllNewsList = async () => {
   return listData;
 };
 
+// ⬛︎ APIから全てのCategoryデータを取得する関数を定義
 export const getAllCategoryList = async () => {
   const listData = await client.getAllContents<Category>({
     endpoint: "categories",
