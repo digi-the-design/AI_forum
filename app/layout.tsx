@@ -1,6 +1,7 @@
 import "./globals.css";
 // GA
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -42,6 +43,7 @@ export default function name({
       </body>
       {/* gaId追加 */}
       <GoogleAnalytics gaId="G-90W0C3VPJE" />
+      <GoogleTagManager gtmId="GTM-5PZMCGPF" />
     </html>
   );
 }

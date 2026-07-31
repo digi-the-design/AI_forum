@@ -1,4 +1,6 @@
 "use client"; // ClientComponentを使用するための宣言
+// GA
+import { sendGAEvent } from "@next/third-parties/google";
 // _actions/contact.tsxのcreateContactData関数をimportするための宣言
 import { createContactData } from "@/app/_actions/contact";
 // ReactのuseActionStateを使用するための宣言
@@ -28,6 +30,11 @@ export default function ContactForm() {
 
   console.log(state);
 
+  // GA4イベント送信対応
+  const handsubmit = () => {
+    sendGAEvent({ event: "contact", value: "submit" });
+  };
+
   // ⬛︎ フォームの送信が成功した場合、サンクスページを表示する
   // state.statusはcreateContactData()関数の戻り値のstatusプロパティを参照している
   if (state.status === "success") {
@@ -43,7 +50,7 @@ export default function ContactForm() {
   return (
     // ⬛︎ フォームJSXを返す
     // action属性にformActionを設定し、フォームの送信時にcreateContactData関数が実行される
-    <form className={styles.form} action={formAction}>
+    <form className={styles.form} action={formAction} onSubmit={handsubmit}>
       <div className={styles.horizontal}>
         <div className={styles.item}>
           <label className={styles.label} htmlFor="lastname">
