@@ -36,6 +36,8 @@ export default function name({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      {/* gtmId追加 */}
+      <GoogleTagManager gtmId="GTM-5PZMCGPF" />
       <body>
         <Header />
         {children}
@@ -43,7 +45,6 @@ export default function name({
       </body>
       {/* gaId追加 */}
       <GoogleAnalytics gaId="G-90W0C3VPJE" />
-      <GoogleTagManager gtmId="GTM-5PZMCGPF" />
     </html>
   );
 }
