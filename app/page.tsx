@@ -41,6 +41,8 @@ export default async function Home() {
           className={styles.bgimg}
           width={4000}
           height={1200}
+          priority
+          sizes="100vw"
         />
       </section>
       <section className={styles.news}>

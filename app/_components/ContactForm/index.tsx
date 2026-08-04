@@ -1,6 +1,8 @@
 "use client"; // ClientComponentを使用するための宣言
-// GA
+// Google_GA4
 import { sendGAEvent } from "@next/third-parties/google";
+// Google_GTM
+import { sendGTMEvent } from "@next/third-parties/google";
 // _actions/contact.tsxのcreateContactData関数をimportするための宣言
 import { createContactData } from "@/app/_actions/contact";
 // ReactのuseActionStateを使用するための宣言
@@ -30,9 +32,12 @@ export default function ContactForm() {
 
   console.log(state);
 
-  // GA4イベント送信対応
+  // GA4/GTMイベント送信対応
   const handsubmit = () => {
+    // Google_GA4
     sendGAEvent({ event: "contact", value: "submit" });
+    // Google_GTM
+    sendGTMEvent({ event: "contact", value: "submit" });
   };
 
   // ⬛︎ フォームの送信が成功した場合、サンクスページを表示する

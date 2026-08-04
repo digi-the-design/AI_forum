@@ -1,7 +1,7 @@
 import "./globals.css";
 // GA
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+//import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -36,8 +36,8 @@ export default function name({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      {/* gtmId追加 */}
-      <GoogleTagManager gtmId="GTM-5PZMCGPF" />
+      {/* gtmId追加 
+      <GoogleTagManager gtmId="GTM-5PZMCGPF" />*/}
       <body>
         <Header />
         {children}
