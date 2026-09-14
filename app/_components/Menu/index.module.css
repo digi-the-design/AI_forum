@@ -1,33 +1,312 @@
+.logoLink {
+  position: absolute;
+  top: 0;
+  left: 15;
+}
+.logoLink img {
+  display: block;
+  width: clamp(160px, 19.5vw, 180px);
+  height: auto;
+}
 .items {
   display: flex;
-  color: #fff;
   gap: 40px;
+  color: #fff;
+  font-size: 13px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+.nav .button {
+  display: block;
+  position: relative;
+  height: 24px;
+  pointer-events: auto;
+}
+.nav.showMenu .button {
+  position: relative;
+  height: 24px;
+  pointer-events: auto;
+  /*animation: buttonMoveL 1.2s forwards;*/
+}
+/*@keyframes buttonMoveL {
+  0% {
+     スタート時は右上のまま
+    top: 18px;
+    right: -24px;
+    transform: translate(0, 0);
+  }
+  80% {
+   80%までは右上の位置に留める
+    top: 18px;
+    right: -24px;
+    transform: translate(0, 0);
+  }
+  100% {
+    3. 右上から「親コンテナの完全な中心」へ移動させる計算
+    top: 50%;
+    right: 24px;
+    transform: translate(50%, -50%);
+  }
+} */
+.nav .navUl {
+  display: relative;
+}
+.nav.hasShownMenu:not(.showMenu) .navUl {
+  animation: moveToRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.nav.showMenu .navUl {
+  position: absolute;
+  top: 18px;
+  display: flex;
+  gap: 40px;
+  color: #fff;
+  font-size: 13px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  animation: moveToCenter 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+/*
+@keyframes moveToCenter {
+  0% {
+    top: 50%;
+    right: 20px;
+    transform: translate(0, -50%);
+  }
+  100% {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+@keyframes moveToRight {
+  0% {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  100% {
+    top: 50%;
+    right: 20px;
+    transform: translate(0, -50%);
+  }
+}*/
+.close_button {
+  display: none;
+}
+.close {
+  display: block;
+  position: absolute;
+  top: 18px;
+  right: 32px;
+}
+ul.items li {
+  position: relative;
+  font-size: 12px;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(48, 48, 48, 0.2);
+  user-select: none;
+}
+ul.items li:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(48, 48, 48, 0.2);
+}
+ul.items li:focus,
+ul.items li:active,
+ul.items li:visited,
+ul.items li:link,
+ul.items li:focus-visible {
+  color: #fff !important;
 }
 
-.button {
-  display: none;
+ul.items li::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  /*線の形状*/
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transition: all 0.3s;
+  transform: scale(0, 1); /*X方向0、Y方向1*/
+  transform-origin: left top; /*左上基点*/
+}
+ul.items li:hover::after {
+  transform: scale(1, 1); /*X方向にスケール拡大*/
+}
+.nav {
+  height: auto;
+  display: flex;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+}
+.nav.open {
+  z-index: 1;
+  background: linear-gradient(to right, #5bb4c6, #c45bc6);
+  /*background-color: #434948;*/
+  flex-flow: wrap;
+  width: 100vw;
+  height: 100vh;
+  transition: background-color 0.3s;
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  justify-content: space-evenly;
+  animation: menuOpenBackground 0.3s ease forwards;
+}
+@keyframes menuOpenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ハンバーガーメニュー・モーダルウインドウ用*/
+.nav.open ul.modal_items {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  gap: 36px;
+  padding-left: 24px;
+  border-left: solid 1px #f8f8f8;
+  animation: modalItemsIn 0.8s ease forwards;
+  /*border-left: solid 1px #808080;*/
 }
 
 @media (max-width: 640px) {
-  .nav {
+  .nav.open ul.modal_items {
+    border-left: none;
+  }
+}
+@keyframes modalItemsIn {
+  from {
+    opacity: 0;
+    transform: translateX(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.nav.open ul.modal_items li {
+  position: relative;
+  font-size: 20px;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(48, 48, 48, 0.2);
+  color: #fff;
+}
+ul.modal_items li:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(48, 48, 48, 0.2);
+}
+ul.modal_items li:focus,
+ul.modal_items li:active,
+ul.modal_items li:visited,
+ul.modal_items li:link,
+ul.modal_items li:focus-visible {
+  color: #fff !important;
+}
+
+ul.modal_items li::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  /*線の形状*/
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  /*アニメーションの指定*/
+  transition: all 0.3s;
+  transform: scale(0, 1); /*X方向0、Y方向1*/
+  transform-origin: left top; /*左上基点*/
+}
+ul.modal_items li:hover::after {
+  transform: scale(1, 1); /*X方向にスケール拡大*/
+}
+
+.nav .nav_open_logoLink {
+  display: none;
+}
+.nav.open .nav_open_logoLink {
+  display: block;
+}
+@media (max-width: 860px) {
+  .nav .navUl {
     display: none;
   }
-
-  .nav.open {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-bg-painted);
-    color: var(--color-text-unpainted);
-    padding: 24px 16px;
+}
+@media (max-width: 640px) {
+  .nav.showMenu .navUl {
+    display: none;
   }
-
+  .nav {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav.open .nav {
+    position: relative;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    flex-flow: wrap;
+    width: 100vw;
+    height: 100vh;
+    transition: background-color 0.3s;
+    display: flex;
+    position: fixed;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+  /* ハンバーガーメニュー・モーダルウインドウ用*/
+  .nav.open ul.modal_items {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    gap: 18px;
+    padding-left: 0px;
+    border-left: none;
+  }
+  /* モーダル時（SP）は常に展開） */
+  .nav.open .hasChild .subItems_02 {
+    width: 100%;
+    color: #333;
+    gap: 0px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .logoLink {
+    top: 4;
+  }
   .items {
     flex-direction: column;
     gap: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.22s ease 0.08s,
+      transform 0.22s ease 0.08s;
+  }
+
+  .nav.open .items {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .button {
@@ -35,11 +314,311 @@
     background: none;
     border: none;
     cursor: pointer;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
 
   .close {
     position: absolute;
-    top: 24px;
+    top: 16px;
     right: 16px;
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
+
+  ul.items li {
+    font-size: 18px;
+  }
+}
+/* 第一階層 */
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* PC 横並び */
+  gap: 36px;
+}
+
+/* 第二階層（初期は非表示） */
+.subItems {
+  list-style: none;
+  padding: 8px;
+  margin: 0;
+  visibility: visible; /* PCではhoverで表示、SPでは常に表示 */
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 16px); /* 親要素の下に配置 */
+  background: white;
+  width: 180px;
+  color: #333;
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.subItems::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  height: 16px;
+  left: 0;
+  width: 100%;
+  background: transparent;
+}
+
+/* hover で表示（PC） */
+.hasChild:hover .subItems {
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+ul.items li ul.subItems li {
+  width: 100% !important;
+  margin: 0px auto;
+  padding: 0px;
+  color: #333;
+  background-color: #fff;
+  line-height: 3;
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* 第二階層の擬似要素のスタイル */
+ul.items li ul.subItems li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5bb4c642;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+/* 第二階層のホバー時のスタイル */
+ul.items li ul.subItems li:hover {
+  width: 100%;
+  color: #333 !important;
+  text-shadow: none;
+}
+/* 第二階層のホバー時の擬似要素のスタイル */
+ul.items li ul.subItems li:hover::before {
+  transform: scaleX(1); /* 背景色を表示するためにX方向にスケール拡大 */
+}
+
+ul.items li ul.subItems li a {
+  display: block;
+  width: 100% !important;
+  position: relative;
+  z-index: 1;
+}
+
+.parent {
+  position: relative;
+  margin-right: 18px; /* 矢印のスペースを確保 */
+}
+
+/* 子要素があることを示す下向きの矢印 */
+.parent::after {
+  content: "";
+  pointer-events: none;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  transform: translateY(-70%) rotate(45deg);
+}
+/*ul.items li.hasChild::after {
+  display: none;
+}*/
+
+/* モーダル時（SP）は常に展開） */
+.nav.open .subItems_02 {
+  display: block;
+  position: static;
+  background: transparent;
+  border: none;
+  padding-left: 16px;
+  width: auto;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  list-style: none;
+  margin: 0;
+  visibility: visible; /* PCではhoverで表示、SPでは常に表示 */
+  pointer-events: auto;
+  top: 24px;
+  width: 200px;
+  color: #333;
+  gap: 12px;
+  box-shadow: none;
+}
+.nav.open .nav ul.modal_items li {
+  font-size: 16px;
+  text-align: left;
+  user-select: none;
+  width: auto;
+}
+.nav.open .nav ul.modal_items li a {
+  position: relative;
+  text-align: left;
+  user-select: none;
+  color: #fff;
+  z-index: 1;
+  transition: color 0.3s ease;
+  line-height: 1;
+  padding: 0px;
+}
+.nav.open .nav ul.modal_items li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* 白い背景 */
+  z-index: -1; /* 文字の後ろに配置 */
+  transform: scaleX(0);
+  transform-origin: left; /* 右側から拡大 */
+  transition: transform 0.3s ease;
+}
+/*第一階層のホバー時のスタイル*/
+.nav.open .nav ul.modal_items li a:hover {
+  color: #969696;
+  transition: color 0.3s ease;
+  overflow: hidden;
+  /* 親の li にホバーしたときに、この中のテキスト全体を上にシフトさせます */
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.nav.open .nav ul.modal_items li a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav.open .nav ul.modal_items li::after {
+  display: none;
+}
+/* li:last-child は transform をキャンセル */
+.nav.open .nav ul.modal_items li ul li:last-child a:hover {
+  transform: none !important;
+}
+/*第二階層のホバー時のスタイル*/
+.nav.open .nav ul.modal_items li ul li {
+  font-size: 14px;
+  text-align: left;
+  line-height: 2.5;
+  list-style: none;
+}
+.nav.open .nav ul.modal_items li ul li a {
+  color: #fff;
+  transition: color 1s ease;
+}
+.nav.open .nav ul.modal_items li ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* 白い背景 */
+  z-index: -1; /* 文字の後ろに配置 */
+  transform: scaleX(0);
+  transform-origin: left; /* 右側から拡大 */
+  transition: transform 0.3s ease;
+}
+.nav.open .nav ul.modal_items li ul li a:hover {
+  color: #333;
+  transition: color 1s ease;
+}
+.nav.open .nav ul.modal_items li ul li a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/*メニューリスト modal_item_reveal*/
+.modal_item_reveal {
+  opacity: 0;
+  transform: translateX(10px);
+  animation: menuModalReveal 420ms ease forwards;
+}
+
+@keyframes menuModalReveal {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rightBlock {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .rightBlock {
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .nav_open_column_l {
+    flex: none !important;
+  }
+  .nav_open_column_r {
+    flex: none !important;
+  }
+}
+.nav_open_column_l {
+  flex: 0 0 70%;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: auto;
+  height: auto;
+  align-content: center;
+  flex-direction: column-reverse;
+  min-width: 0; /*flexのwidth増幅リセット*/
+}
+.nav_open_column_r {
+  flex: 0 0 30%;
+  min-width: 0; /*flexのwidth増幅リセット*/
+}
+.openNav_sns_icon {
+  margin-top: 42px;
+  margin-left: -10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

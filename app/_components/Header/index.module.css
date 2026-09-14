@@ -1,19 +1,51 @@
 .header {
-  position: absolute;
-  padding: 16px 24px 8px;
-  z-index: 1000;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   display: flex;
+  text-align: center;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
+  top: 0px;
+  left: 0;
+  z-index: 1000;
+  position: fixed;
+  padding: 0;
+  transition: top 1s ease;
+  height: 58px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.03); /* 軽い影を追加 */
+  transition:
+    background-color 1s ease
+}
+.header.show {
+  background-color: #53aec0;
+  opacity: 0.98;
+  backdrop-filter: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  width: 100%;
+  transition:
+    background-color 1s ease
 }
 
-.logoLink {
-  display: flex;
+.header .nav {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .header {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    justify-content: flex-end;
+    position: fixed;
+  }
 }
 
 .logo {
-  height: 24px;
+  height: 58px;
   width: auto;
 }
 .items {
@@ -23,6 +55,6 @@
 }
 @media (max-width: 640px) {
   .header {
-    padding: 24px 16px 8px;
+    padding: 8px 16px;
   }
 }

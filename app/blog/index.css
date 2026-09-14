@@ -1,0 +1,22 @@
+
+.text_container p {
+  position: relative;
+  margin-bottom: 48px;
+}
+.text_container .image_block {
+  padding: 0px;
+  margin-bottom: 48px;
+}
+
+.text_container .image_block img {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}
+.blog {
+  margin-bottom: 0px;
+  height: 340px;
+  opacity: 0.5;
+}
+

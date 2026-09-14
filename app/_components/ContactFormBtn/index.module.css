@@ -1,0 +1,360 @@
+/*contact_form_block*/
+.contact_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0px;
+  margin: 0px;
+  background-color: #f1f1f1;
+  position: relative;
+  z-index: 1;
+  margin-top: 120px;
+}
+
+.contact_form a {
+  text-decoration: none;
+  font-size: 24px;
+  width: 100%;
+}
+@media (min-width: 769px) {
+  .contact_form_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+    background-color: #f1f1f1;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .contact_form_container::before {
+    width: 50%;
+    height: 360px;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background-image: url("/img/ai_bg_02.jpg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 180%;
+    opacity: 1;
+    transition:
+      background-size 0.5s ease,
+      opacity 0.5s ease;
+    z-index: 99; /* アニメーションの指定（変化にかける時間を設定） */
+    transition:
+      background-size 0.5s ease-out,
+      filter 0.5s ease-out;
+  }
+
+  .contact_form_container:hover::before {
+    background-size: 140%;
+    filter: brightness(
+      0.4
+    ); /* 1より小さい値で暗くなります（0.6は元の60%の明るさ） */
+    /* アニメーションの指定（変化にかける時間を設定） */
+    transition:
+      background-size 0.5s ease-out,
+      filter 0.5s ease-out;
+  }
+  .contact_form_container .contact {
+    width: 50%;
+    height: 360px;
+    padding: 0px;
+    margin: 0px;
+    /*background-color: #5bb4c6;*/
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: opacity 0.4s ease;
+    opacity: 1;
+  }
+  .contact_form_container .form {
+    width: 50%;
+    height: 360px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    background: #5bb4c6;
+    transition: background-color 0.4s ease;
+  }
+
+  .contact_form_container .contact p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 2.8em;
+  }
+
+  .contact_form_container:hover .form::before {
+    opacity: 0;
+  }
+
+  .contact_form_container .form::before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #5bb4c6, #5bb4c6);
+    opacity: 1;
+    transition: 0.4s ease;
+    z-index: -1;
+  }
+
+  .contact_form_container .form::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #5bb4c6, #c45bc6);
+    opacity: 1;
+    transition: 0.4s ease;
+    z-index: -2;
+  }
+
+  .contact_form_container .form button {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+
+.contact_form_container .form button.btnlinestretches2 {
+  /*線の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+  color: #ffffff;
+  padding: 16px 32px;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+}
+
+/*線の設定*/
+.contact_form_container .form button.btnlinestretches2::before,
+.contact_form_container .form button.btnlinestretches2::after {
+  content: "";
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  /*事前に出現させる線の形状*/
+  border: solid 2px #ffffff;
+  width: 10px;
+  height: 10px;
+  /*アニメーションの指定*/
+  transition: all 0.3s ease-in-out;
+}
+
+.contact_form_container .form button.btnlinestretches2::before {
+  /*事前に出現させる線の位置*/
+  top: 0;
+  left: 0;
+  /*事前に出現させる線の形状*/
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.contact_form_container .form button.btnlinestretches2::after {
+  /*事前に出現させる線の位置*/
+  bottom: 0;
+  right: 0;
+  /*事前に出現させる線の形状*/
+  border-width: 0 1.5px 1.5px 0;
+}
+
+.contact_form_container:hover .form button.btnlinestretches2::before,
+.contact_form_container:hover .form button.btnlinestretches2::after {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .contact_form_container {
+    flex-direction: column;
+  }
+
+  .contact_form_container::before {
+    width: 100%;
+    height: 360px;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background-image: url("/img/ai_bg_02.jpg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 180%;
+    opacity: 1;
+    transition:
+      background-size 0.5s ease,
+      opacity 0.5s ease;
+    z-index: 99;
+  }
+
+  .contact_form_container:hover::before {
+    background-size: 180%;
+  }
+  .contact_form_container .contact {
+    width: 100%;
+    height: 360px;
+    padding: 0px;
+    margin: 0px;
+    /*background-color: #5bb4c6;*/
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: opacity 0.4s ease;
+    opacity: 1;
+  }
+  .contact_form_container .contact p {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 2.8em;
+  }
+  .contact_form_container .form {
+    width: 100%;
+    height: 360px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    background: #5bb4c6;
+    transition: background-color 0.4s ease;
+  }
+  .contact_form_container .form {
+    width: 100%;
+    height: 360px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    background: #5bb4c6;
+    transition: background-color 0.4s ease;
+  }
+  .contact_form_container:hover .form::before {
+    opacity: 0;
+  }
+
+  .contact_form_container .form::before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #5bb4c6, #5bb4c6);
+    opacity: 0;
+    transition: 0.4s ease;
+    z-index: -1;
+  }
+  .contact_form_container .form::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #5bb4c6, #c45bc6);
+    opacity: 1;
+    transition: 0.4s ease;
+    z-index: -2;
+  }
+  /* button */
+
+  .contact_form_container .form p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1.4em;
+    color: #fff;
+  }
+
+  .contact_form_container .form button {
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 24px;
+  }
+
+  /* button */
+  .contact_form_container .form button.btnlinestretches2 {
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+    /*ボタンの形状*/
+    color: #ffffff;
+    padding: 16px 32px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+  }
+
+  /*線の設定*/
+  .contact_form_container .form button.btnlinestretches2::before,
+  .contact_form_container .form button.btnlinestretches2::after {
+    content: "";
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    /*事前に出現させる線の形状*/
+    border: solid 2px #ffffff;
+    width: 10px;
+    height: 10px;
+    /*アニメーションの指定*/
+    transition: all 0.3s ease-in-out;
+  }
+
+  .contact_form_container .form button.btnlinestretches2::before {
+    /*事前に出現させる線の位置*/
+    top: 0;
+    left: 0;
+    /*事前に出現させる線の形状*/
+    border-width: 2px 0 0 2px;
+  }
+
+  .contact_form_container .form button.btnlinestretches2::after {
+    /*事前に出現させる線の位置*/
+    bottom: 0;
+    right: 0;
+    /*事前に出現させる線の形状*/
+    border-width: 0 2px 2px 0;
+  }
+
+  .contact_form_container:hover .form button.btnlinestretches2::before,
+  .contact_form_container:hover .form button.btnlinestretches2::after {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-color: #ffffff;
+  }
+}

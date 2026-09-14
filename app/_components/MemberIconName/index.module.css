@@ -1,0 +1,47 @@
+.caption a {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 0px 0px;
+}
+.caption a:hover,
+.caption a:focus,
+.caption a:active,
+.caption a:visited,
+.caption a:link,
+.caption a:focus-visible {
+  color: #777 !important;
+}
+
+.caption {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.caption p {
+}
+.caption img {
+  display: block;
+  width: 36px !important;
+  height: 36px !important;
+  margin-right: 8px;
+}
+
+.caption p.author_name {
+  display: inline-block;
+  font-size: 14px;
+  color: #333;
+  margin: 0px 12px 0px 0px;
+  padding: 0px;
+  transition: color 0.3s ease;
+}
+.caption p.author_name:hover {
+  color: #5bb4c6;
+} /* 追加 */
+.caption p.blog_date {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.4em;
+  padding: 0px;
+  margin: 0px;
+}

@@ -1,50 +1,291 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import cx from "classnames";
 import styles from "./index.module.css";
+import SnsIcon from "@/app/_components/SNSIcon";
 
-export default function Menu() {
-  //usestateの返り値（state値,stateを更新する関数）をconst分割代入で受け取り、usestate関数のTypeScript型と引数の初期値(false)設定。
-  //Reactの仕様で分割代入の内容は[値,関数]。setOpen(値)でisOpen(現在の状態)のboolean値更新。
-  const [isOpen, setOpen] = useState<boolean>(false);
-  //setOpen関数の値(true/false)でstateを更新するための関数を作成(トリガーボタンのonClickで呼び出しからisOpenの値を更新)
-  //open/close関数を作成(アロー関数をconstに代入して定義している変数)
-  //setOpenを呼び出してisOpenを更新(setOpen(isOpen))するトリガーopen/close関数
-  const open = () => setOpen(true);
-  const close = () => setOpen(false);
-  //const open = () => {document.querySelector("nav")?.classList.add(styles.open);};
+import { useState, useEffect } from "react";
+type MenuProps = {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+};
+
+export default function Menu({ isOpen, onOpen, onClose }: MenuProps) {
+  // ⬛︎ スクロールでCSS追加を判別するための状態管理useStateを定義
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasShownMenu, setHasShownMenu] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const onScroll = () => {
+      if (window.scrollY > 550) {
+        setIsVisible(true);
+        setHasShownMenu(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []); // ← 依存配列を空にして一度だけリスナー登録
+
+  // ⬛︎ メニューリストanimationDelay追加
+  useEffect(() => {
+    if (!isOpen || typeof window === "undefined") return;
+
+    const modalList = document.querySelector(
+      `.${styles.modal_items}`,
+    ) as HTMLUListElement | null;
+
+    if (!modalList) return;
+
+    const items = Array.from(modalList.children) as HTMLLIElement[];
+
+    items.forEach((item, index) => {
+      item.classList.add(styles.modal_item_reveal);
+      item.style.animationDelay = `${index * 200}ms`;
+    });
+  }, [isOpen]);
+
+  // ⬛︎ 以下はモバイル版メニューの開閉状態を管理するためのコードです。
+  // ここでisOpenの状態を管理するuseStateを定義：初期値false（閉じている状態）
+  // open関数とclose関数を定義して、メニューの開閉状態を切り替える
+  const handleLinkClick = () => {
+    setTimeout(onClose, 500);
+  };
+
   return (
-    <div>
-      {/*isOpenにtrue/falseのどちらが入ったかで条件分岐。trueならstyle.open追加。falseなら追加しない。 */}
-      <nav className={cx(styles.nav, isOpen && styles.open)}>
-        <ul className={styles.items}>
-          <li>
-            <Link href="/news">ニュース</Link>
-          </li>
-          <li>
-            <Link href="/members">メンバー</Link>
-          </li>
-          <li>
-            <Link href="/contact">お問い合わせ</Link>
-          </li>
-        </ul>
-        {/*buttonクラスとstyles.closeをcxで2つ追加*/}
-        <button className={cx(styles.button, styles.close)} onClick={close}>
-          <Image
-            src="/close.svg"
-            alt="閉じる"
-            width={24}
-            height={24}
-            priority
-          />
-        </button>
-      </nav>
-      <button className={styles.button} onClick={open}>
-        <Image src="/menu.svg" alt="メニュー" width={24} height={24} />
-      </button>
-    </div>
+    <nav
+      className={cx(
+        styles.nav,
+        isOpen && styles.open,
+        isVisible && styles.showMenu,
+        hasShownMenu && styles.hasShownMenu,
+      )}
+    >
+      {!isOpen && (
+        <>
+          <Link href="/" className={styles.logoLink}>
+            <Image
+              src="/img/logo.png"
+              alt="SIMPLE"
+              width={188}
+              height={58}
+              className={styles.logo}
+              priority
+            />
+          </Link>
+          <nav className={styles.navUl}>
+            <ul className={styles.items}>
+              {/* top */}
+              <li>
+                <Link href="/" onClick={handleLinkClick}>
+                  トップ
+                </Link>
+              </li>
+
+              {/* TOPICS（第二階層あり） */}
+              <li className={styles.hasChild}>
+                <span className={styles.parent}>TOPICS</span>
+                <ul className={styles.subItems}>
+                  <li>
+                    <Link href="/influence/" onClick={handleLinkClick}>
+                      AIの進化とその影響
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/future_society/" onClick={handleLinkClick}>
+                      AIと未来社会
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/ethic/" onClick={handleLinkClick}>
+                      AIと倫理
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              {/* news */}
+              <li>
+                <Link href="/news" onClick={handleLinkClick}>
+                  ニュース
+                </Link>
+              </li>
+
+              {/* blog（第二階層あり） */}
+              <li className={styles.hasChild}>
+                <span className={styles.parent}>ブログ</span>
+                <ul className={styles.subItems}>
+                  <li>
+                    <Link href="/blog/" onClick={handleLinkClick}>
+                      BLOG & REPORT
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog/members" onClick={handleLinkClick}>
+                      MEMBER
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              {/* about（第二階層あり） */}
+              <li className={styles.hasChild}>
+                <span className={styles.parent}>会社情報</span>
+                <ul className={styles.subItems}>
+                  <li>
+                    <Link href="/about/" onClick={handleLinkClick}>
+                      ご挨拶
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/perspective/" onClick={handleLinkClick}>
+                      沿革
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/access/" onClick={handleLinkClick}>
+                      アクセス
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              {/* contact */}
+              <li>
+                <Link href="/contact" onClick={handleLinkClick}>
+                  お問い合わせ
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={styles.rightBlock}>
+            {/* SnsIcon */}
+            <SnsIcon variant="header" url="" title="" />
+            <button className={styles.button} onClick={onOpen}>
+              <Image
+                src="/img/menu.svg"
+                alt="メニュー"
+                width={24}
+                height={24}
+              />
+            </button>
+          </div>
+        </>
+      )}
+
+      {isOpen && (
+        <>
+          <div className={styles.nav_open_column_l}>
+            <Link href="/" className={styles.nav_open_logoLink}>
+              <Image
+                src="/img/logo.png"
+                alt="SIMPLE"
+                width={240}
+                height={58}
+                className={styles.logo}
+                priority
+              />
+            </Link>
+          </div>
+          <div className={styles.nav_open_column_r}>
+            <nav className={styles.nav}>
+              <ul className={styles.modal_items}>
+                {" "}
+                <li>
+                  <Link href="/" onClick={handleLinkClick}>
+                    トップ
+                  </Link>
+                </li>
+                <li className={styles.hasChild}>
+                  <span className={styles.parent}>TOPICS</span>
+                  <ul className={styles.subItems_02}>
+                    <li>
+                      <Link href="/influence/" onClick={handleLinkClick}>
+                        AIの進化とその影響
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/future_society/" onClick={handleLinkClick}>
+                        AIと未来社会
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/ethic/" onClick={handleLinkClick}>
+                        AIと倫理
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Link href="/news" onClick={handleLinkClick}>
+                    ニュース
+                  </Link>
+                </li>
+                <li className={styles.hasChild}>
+                  <span className={styles.parent}>ブログ</span>
+                  <ul className={styles.subItems_02}>
+                    <li>
+                      <Link href="/blog/" onClick={handleLinkClick}>
+                        BLOG & REPORT
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/members" onClick={handleLinkClick}>
+                        MEMBER
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li className={styles.hasChild}>
+                  <span className={styles.parent}>会社情報</span>
+                  <ul className={styles.subItems_02}>
+                    <li>
+                      <Link href="/about/" onClick={handleLinkClick}>
+                        ご挨拶
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/perspective/" onClick={handleLinkClick}>
+                        沿革
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/access/" onClick={handleLinkClick}>
+                        アクセス
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Link href="/contact" onClick={handleLinkClick}>
+                    お問い合わせ
+                  </Link>
+                </li>
+              </ul>{" "}
+              <div className={styles.openNav_sns_icon}>
+                <SnsIcon variant="openNav" url="" title="" />
+              </div>
+            </nav>
+            <button
+              className={cx(styles.close_button, isOpen && styles.close)}
+              onClick={onClose}
+            >
+              <Image
+                src="/img/close.svg"
+                alt="閉じる"
+                width={24}
+                height={24}
+                priority
+              />
+            </button>
+          </div>
+        </>
+      )}
+    </nav>
   );
 }

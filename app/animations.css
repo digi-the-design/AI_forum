@@ -1,0 +1,83 @@
+/* ========= グローバルアニメーション定義 ========= */
+
+/* 背景色が伸びて出現 */
+.bgextend {
+  animation-name: bgextendAnimeBase;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeBase {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* フェードイン（クラス付与後） */
+.bgappear {
+  animation-name: bgappearAnime;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes bgappearAnime {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 左右に広がるアニメーション */
+.bgLRextend::before {
+  animation-name: bgLRextendAnime;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5bb4c6;
+  z-index: -1;
+}
+
+@keyframes bgLRextendAnime {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  50.001% {
+    transform-origin: right;
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+/* トリガー用の初期状態 */
+.bgappearTrigger,
+.bgappearTrigger_02,
+.bgappearTrigger_03 {
+  opacity: 0;
+}
+
+.bgLRextendTrigger,
+.bgLRextendTrigger_02,
+.bgLRextendTrigger_03 {
+  position: relative;
+}

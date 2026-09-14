@@ -1,0 +1,136 @@
+/*topics*/
+.topics_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  /* パディングを60pxに設定 */
+  height: auto;
+  position: relative;
+  flex-wrap: wrap;
+}
+.topics_main .main_title {
+  margin: 0px auto 24px auto;
+}
+@media (min-width: 769px) {
+  .topics_main {
+    max-width: 1080px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .topics_main .main_title {
+    width: 100%;
+    height: 100%;
+    /* マージンを適当に調整 */
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main_visual h3 {
+    width: 100%;
+    height: auto;
+    font-family: "letter-gothic-std", monospace;
+    font-weight: 400;
+    font-size: 48px;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 0.005cm;
+    line-height: normal;
+    text-align: center;
+    position: absolute;
+  }
+
+  .topics_main .main_title_mt {
+    margin: 0px auto 80px auto !important;
+  }
+
+  .topics_main .main_title h2 {
+    color: #333333;
+    display: inline-block;
+    margin: 0px auto 16px auto;
+    /* 上下のマージンを調整 */
+    font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 1.25em;
+    /*background-color: #e1ff00;*/
+  }
+
+  .topics_main .main_title p {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.64em;
+    font-variation-settings: "wght" 400;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topics_main {
+    max-width: 1080px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .topics_main .main_title {
+    width: 100%;
+    height: 100%;
+    margin: 36px 10px;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main_visual h3 {
+    width: 100%;
+    height: auto;
+    font-family: "letter-gothic-std", monospace;
+    font-weight: 400;
+    font-size: 32px;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 0.005cm;
+    line-height: normal;
+    text-align: center;
+    position: absolute;
+  }
+
+  .topics_main .main_title_mt {
+    margin: 0px auto 80px auto !important;
+  }
+
+  .topics_main .main_title h2 {
+    color: #333333;
+    display: inline-block;
+    margin: 0px auto 40px auto;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 1.6em;
+  }
+
+  .topics_main .main_title p {
+    color: #333;
+    font-size: 16px;
+    line-height: 2.4em;
+    font-variation-settings: "wght" 400;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+}

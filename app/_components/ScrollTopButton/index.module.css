@@ -1,0 +1,26 @@
+/*scroll-to-top*/
+.scroll_to_top {
+  position: fixed;
+  right: 40px;
+  bottom: -150px;
+  opacity: 1;
+  transition:
+    opacity 0.3s ease,
+    bottom 0.3s ease;
+  z-index: 2;
+  border: none;
+  background: transparent;
+}
+.scroll_to_top img {
+  width: 80px;
+  height: auto;
+  border: none;
+}
+.scroll_active {
+  opacity: 1;
+  bottom: 80px;
+}
+
+.scroll_to_top:hover {
+  opacity: 0.7;
+}

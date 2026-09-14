@@ -1,0 +1,183 @@
+/*thumbnailcard*/
+.card {
+  margin: 0 !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.4s ease;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: #fff;
+  cursor: pointer;
+  opacity: 1;
+  border: solid 1px #efefef;
+}
+
+ul.thumbnail_list li.card:hover {
+  transform: translateY(-1px) scale(1.01);
+  /* ホバー時に上に動き、少し拡大する */
+  transition: transform 0.4s ease;
+  /* アニメーションを少しゆっくりに */
+}
+
+.card_inner {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.thumbnail_list li.card .card_inner .thumbnail {
+  overflow: hidden;
+  position: relative;
+  max-height: 240px;
+}
+.thumbnail_list li.card .card_inner .thumbnail img {
+  width: 100%;
+  height: 100% !important;
+  display: block;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  /* 右側を真っ直ぐにし、左側だけ斜めに切り取り、下側に画像が隠れる見た目 */
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+}
+@media (min-width: 768px) {
+  .thumbnail_list li.card:nth-of-type(2) .card_inner {
+    flex-direction: row-reverse;
+  }
+}
+.thumbnail_list li.card:nth-of-type(2) .card_inner .thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  /* 右側を真っ直ぐにし、左側だけ斜めに切り取り、下側に画像が隠れる見た目 */
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  /*(0 0)──────────────(100% 0)
+   │                    │
+   │                    │
+   │                    │
+(0 100%)──────────(90% 100%)
+*/
+}
+.thumbnail_list li.card.active {
+  opacity: 1;
+  border: 3px solid transparent;
+  /* ② 1つ目の背景（コンテンツの中身の色：例として白）を「padding-box」に指定 */
+  /* 2つ目の背景（グラデーション）を「border-box」に指定して外側まで広げる */
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(to left, #5bb4c6, #c45bc6) border-box;
+  /* 角丸も綺麗に反映されます */
+  border-radius: 8px;
+}
+.content {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-weight: 300;
+}
+
+.heading_title {
+  margin: 0px;
+  padding: 24px;
+}
+
+.content h2 {
+  padding: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4em;
+  /* 全ての見出しのフォントサイズを統一 */
+  color: #333;
+  margin-bottom: 11px;
+}
+
+.content p {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333;
+  line-height: 1.6em;
+}
+.caption {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px;
+  font-weight: 300;
+}
+
+.box {
+  opacity: 0;
+}
+
+ul.thumbnail_list {
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+a.link {
+  display: inline-block;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 767px) {
+  .thumbnail_list li.card .card_inner {
+    display: flex;
+    flex-direction: column-reverse !important;
+  }
+  .thumbnail_list li.card:nth-of-type(2) .card_inner {
+    display: flex;
+  }
+  .thumbnail_list li.card .card_inner .thumbnail img {
+    clip-path: none;
+  }
+  .thumbnail_list li.card:nth-of-type(2) .card_inner {
+    flex-direction: row;
+  }
+  .thumbnail_list li.card:nth-of-type(2) .card_inner .thumbnail img {
+    clip-path: none;
+  }
+}
+
+/*BLOG見出し*/
+.title_block_topics {
+  max-width: 1080px;
+  width: auto;
+  text-align: left;
+  margin-bottom: 45px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.title_topics {
+  color: #5bb4c6;
+  display: inline-block;
+  font-size: 18px;
+  font-variation-settings: "wght" 400;
+  padding: 10px 20px;
+  line-height: 1.64em;
+  border: solid 1px #5bb4c6;
+  font-weight: bold;
+}

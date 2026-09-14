@@ -1,0 +1,134 @@
+.inner_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+header .logo {
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+header.scroll_header {
+  /*-webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);*/
+  background-color: #5bb4c6; /* 開いた時の背景色 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: fixed;
+  padding-right: 16px;
+  top: -58px;
+  transition: top 1s ease;
+  height: 58px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.03); /* 軽い影を追加 */
+}
+
+.button {
+  display: block !important;
+}
+header.scroll_header.show {
+  top: 0;
+  position: fixed;
+}
+
+header.scroll_header a {
+  color: #fff !important;
+}
+
+header.scroll_header .scrollmenu {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  header.scroll_header {
+    display: none !important;
+  }
+  header.scroll_header a {
+    color: #fff;
+  }
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  font-size: 14px;
+}
+
+.item {
+  display: flex;
+  position: relative;
+  font-size: 13px;
+  font-weight: 400;
+}
+.items li {
+  color: #fff;
+}
+nav ul.list li:last-child {
+  margin-right: 0;
+}
+
+.inner-container nav ul.list li a:link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.inner-container nav ul.list li a:visited,
+nav ul.list li a:hover,
+nav ul.list li a:active {
+  text-decoration: none;
+  color: #fff;
+}
+
+header.scroll_header .inner-container nav ul.list li a:link {
+  text-decoration: none;
+  color: #333;
+}
+
+header.scroll_header .inner-container nav ul.list li a:visited,
+nav ul.list li a:hover,
+nav ul.list li a:active {
+  text-decoration: none;
+  color: #333;
+}
+
+header.scroll_header .inner-container nav ul.list li a:link {
+  text-decoration: none;
+  color: #333;
+}
+
+nav ul.list.list li a:visited,
+nav ul.list.list li a:hover,
+nav ul.list.list li a:active {
+  text-decoration: none;
+  color: #333;
+}
+nav ul.list li::after {
+  content: "";
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  /*線の形状*/
+  width: 100%;
+  height: 1px;
+  background: #333;
+  /*アニメーションの指定*/
+  transition: all 0.3s;
+  transform: scale(0, 1); /*X方向0、Y方向1*/
+  transform-origin: left top; /*左上基点*/
+}
+nav ul.list li:hover::after {
+  transform: scale(1, 1); /*X方向にスケール拡大*/
+}

@@ -1,12 +1,19 @@
 import styles from "./index.module.css";
+
 type Props = {
-  href: string;
-  children: React.ReactNode;
+  href?: string;
+  text?: string;
+  children?: React.ReactNode;
 };
-export default function ButtonLink({ href, children }: Props) {
+
+export default function ButtonLink({
+  href = "/",
+  text,
+  children,
+}: Props) {
   return (
     <a href={href} className={styles.button}>
-      {children}
+      {children ?? text ?? "詳細を見る"}
     </a>
   );
 }

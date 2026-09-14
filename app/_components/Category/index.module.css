@@ -1,7 +1,64 @@
-.tag {
-  background-color: var(--color-bg-sub);
-  padding: 4px 12px;
-  border-radius: var(--border-radius);
+.primary {
+  background-color: var(--color-border-dark);
+  padding: 6px 12px;
+  border-radius: none;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 0.7rem;
+  color: var(--color-text-unpainted);
+}
+
+.secondary {
+  border: solid 1px #5bb4c6;
+  border-radius: 30px;
+  line-height: 1em;
+  font-size: 0.7em;
+  color: #5bb4c6;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background-color: #f4fdff;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  margin: 0px 7px 5px 0px;
+}
+
+/* タグブロックのスタイル */
+.tag_block {
+  margin: 0px;
+  padding: 0px;
+  width: auto !important;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .tag_block {
+    width: 100%;
+  }
+
+  .tag_block .secondary {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-right: 10px;
+    margin: 0px 12px 24px 0px;
+  }
+}
+
+.tag_block .secondary:hover {
+  background-color: #5bb4c6;
+  color: #fff;
+}
+
+.tag_block ul li.secondary:hover a {
+  color: #fff;
+}
+
+.tag_block span.secondary a,
+.tag_block span.secondary:hover a,
+a:visited,
+a:active {
+  text-decoration: none;
+  /* color: #5bb4c6; */
+}
+.tag_block a.tag_link {
+  display: inline-flex;
 }

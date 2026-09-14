@@ -1,0 +1,116 @@
+.section_mb {
+  margin-bottom: 80px !important;
+}
+
+.text_content {
+  display: flex;
+  align-items: flex-start;
+  /* content-blockとimage-blockの上を揃える */
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: unset !important;
+}
+
+ul.thumbnail_list_newstop {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 48px;
+}
+
+ul.thumbnail_list_newstop li {
+  width: 100%;
+}
+ul.thumbnail_list_newstop li:last-child {
+  border-bottom: none;
+}
+@media (min-width: 874px) and (max-width: 1180px) {
+  ul.thumbnail_list_newstop li {
+    width: 100%;
+    border-bottom: solid 1px #ececec;
+  }
+}
+
+@media (max-width: 873px) {
+  ul.thumbnail_list_newstop {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+  }
+  ul.thumbnail_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ul.thumbnail_list_newstop li {
+    flex: 1 !important;
+    margin-bottom: 36px;
+    border-bottom: solid 1px #d4d4d4;
+  }
+}
+
+ul.thumbnail_list_newstop {
+  display: flex;
+  flex-direction: column !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+}
+
+@media (max-width: 873px) {
+  ul.thumbnail_list_newstop {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+  }
+
+  ul.thumbnail_list_newstop li {
+    flex: 1 !important;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    border-bottom: solid 1px #d4d4d4;
+  }
+
+  ul.thumbnail_list_newstop li:first-child {
+    flex: none !important;
+    width: 100%;
+    margin-bottom: 0px;
+    border-bottom: solid 1px #d4d4d4;
+  }
+
+  ul.thumbnail_list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.text_container p {
+  position: relative;
+  margin-bottom: 48px;
+}
+.text_container .image_block {
+  padding: 0px;
+  margin-bottom: 48px;
+}
+
+.text_container .image_block img {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}
+.blog {
+  margin-bottom: 0px;
+  height: 340px;
+  opacity: 0.5;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* brightness(.7) 相当 */
+  z-index: 1;
+}

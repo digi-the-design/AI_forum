@@ -1,0 +1,7 @@
+.main_visual {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}

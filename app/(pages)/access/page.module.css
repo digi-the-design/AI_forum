@@ -1,0 +1,43 @@
+h2.about_title {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0px auto 32px auto;
+}
+h4.about_title {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 28px auto 8px auto;
+}
+.autherName {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+  font-weight: 400;
+}
+.text_container {
+  margin: 0px auto 120px auto;
+}
+.text_container p {
+  font-weight: 300;
+  position: relative;
+  margin: 48px 0;
+  line-height: 2.4em;
+}
+.text_container span {
+  display: flex;
+  font-size: 12px;
+  font-weight: 300;
+  position: relative;
+  margin: 0px auto 6px auto;
+  line-height: 1em;
+}
+.background {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* brightness(.7) 相当 */
+  z-index: 1;
+}

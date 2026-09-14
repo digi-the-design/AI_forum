@@ -5,11 +5,11 @@
   border-bottom: none;
 }
 
-.link {
+span.link {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
-  padding: 24px 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .image {
@@ -27,7 +27,11 @@
 .meta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 300;
+  white-space: nowrap;
 }
 
 @media (max-width: 640px) {
@@ -49,5 +53,268 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    white-space: break-spaces;
+  }
+}
+
+@media (max-width: 640px) {
+  /*ニュースブロック*/
+  .news {
+    position: relative;
+    width: 50vw;
+    margin: -40px auto 0;
+    padding: 0;
+  }
+  .information_block {
+    max-width: 980px;
+    margin: -40px auto 0;
+    padding: 0px;
+    display: flex;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.01); /* 軽い影を追加 */
+    z-index: 100;
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .information_title {
+    max-width: 160px;
+    min-width: 20%;
+    min-height: none;
+    width: 30%;
+    height: auto;
+    background-color: #5bb4c6;
+    display: flex;
+    justify-content: center;
+    /* 横方向の中央揃え */
+    align-items: center;
+    /* 縦方向の中央揃え */
+    font-variation-settings: "wght" 400;
+  }
+
+  .information_title .inner_block {
+    width: 100%;
+    height: auto;
+  }
+
+  .information_title .inner_block h2 {
+    font-size: 16px;
+    text-align: center;
+    /* タイトルを中央に配置 */
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .information_content {
+    flex: 1;
+    /* 右側の比率を1に設定 */
+    background-color: #ffffff;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 8px 0px 8px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .newsItemTitle {
+    margin-right: 12px;
+  }
+  span.indicator {
+    font-size: 10px;
+    color: #c45bc6;
+    padding: 4px 8px;
+    border: solid 1px #c45bc6;
+    border-radius: 3px;
+    line-height: 1;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+  span.indicator::after {
+    content: "\A"; /* 改行コードを指定 */
+    white-space: pre; /* 改行コードを有効化する */
+  }
+}
+
+@media (max-width: 789px) {
+  /*ニュースブロック*/
+  .news {
+    position: relative;
+    width: auto !important;
+    margin: -40px auto 0;
+    padding: 0;
+  }
+  .information_block {
+    max-width: 100%;
+    margin: -40px auto 0;
+    padding: 0px;
+    display: flex;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.01); /* 軽い影を追加 */
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 0px;
+    background-color: #fff;
+  }
+  .information_title {
+    max-width: 160px;
+    min-width: 20%;
+    min-height: none;
+    width: 30%;
+    height: auto;
+    background-color: #5bb4c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-variation-settings: "wght" 400;
+  }
+
+  .information_title .inner_block {
+    width: 100%;
+    height: auto;
+  }
+
+  .information_title .inner_block h2 {
+    font-size: 16px;
+    text-align: center;
+    /* タイトルを中央に配置 */
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .information_content {
+    flex: 1;
+    /* 右側の比率を1に設定 */
+    background-color: #ffffff;
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .newsItemTitle {
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10;
+  }
+  span.indicator {
+    font-size: 10px;
+    color: #c45bc6;
+    padding: 4px 8px;
+    border: solid 1px #c45bc6;
+    border-radius: 3px;
+    line-height: 1;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+  span.indicator::after {
+    content: "\A"; /* 改行コードを指定 */
+    white-space: pre; /* 改行コードを有効化する */
+  }
+}
+@media (min-width: 788px) {
+  /*ニュースブロック*/
+  .news {
+    position: relative;
+    width: 840px;
+    margin: -40px auto 0;
+    padding: 0;
+  }
+  .information_block {
+    max-width: 980px;
+    margin: -40px auto 0;
+    padding: 0px;
+    display: flex;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.01); /* 軽い影を追加 */
+    z-index: 100;
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .information_title {
+    max-width: 160px;
+    min-width: 20%;
+    min-height: none;
+    width: 30%;
+    height: auto;
+    background-color: #5bb4c6;
+    display: flex;
+    justify-content: center;
+    /* 横方向の中央揃え */
+    align-items: center;
+    /* 縦方向の中央揃え */
+    font-variation-settings: "wght" 400;
+  }
+
+  .information_title .inner_block {
+    width: 100%;
+    height: auto;
+  }
+
+  .information_title .inner_block h2 {
+    font-size: 16px;
+    text-align: center;
+    /* タイトルを中央に配置 */
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .information_content {
+    flex: 1;
+    /* 右側の比率を1に設定 */
+    background-color: #ffffff;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 8px 0px 8px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .newsItemTitle {
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10;
+  }
+  .ticker {
+    flex: 1;
+    overflow: hidden;
+    height: 40px;
+    display: block;
+    align-items: center;
+  }
+  .swiper-slide {
+    white-space: nowrap;
+  }
+  .swiper {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-left: 4px !important;
+  }
+  span.indicator {
+    font-size: 10px;
+    color: #c45bc6;
+    padding: 4px 8px;
+    border: solid 1px #c45bc6;
+    border-radius: 3px;
+    line-height: 1;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+  span.indicator::after {
+    content: "\A"; /* 改行コードを指定 */
+    white-space: pre; /* 改行コードを有効化する */
   }
 }

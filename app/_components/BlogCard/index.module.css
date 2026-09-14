@@ -1,0 +1,149 @@
+.thumbnail {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.heading_title {
+  margin: 0px;
+  padding: 15px;
+}
+
+.heading_title .blog_date {
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.4em;
+  padding: 0px;
+  /*margin-bottom: 8px;*/
+}
+.content h2 {
+  padding: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4em;
+  /* 全ての見出しのフォントサイズを統一 */
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.content p {
+  padding: 0 15px 15px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333;
+  line-height: 1.6em;
+}
+.caption {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 0px 12px 0px;
+}
+.caption img {
+  display: block;
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 8px;
+}
+
+.heading_title p.author_name {
+  display: inline-block;
+  font-size: 13px;
+  color: #818181;
+  margin: 0px 16px 0px 0px;
+  padding: 0px;
+}
+
+.box {
+  opacity: 0;
+}
+
+/*thumbnailcard*/
+ul.thumbnail_list li.card {
+  margin: 0px 8px 0px 0px !important;
+  border-radius: 8px;
+  overflow: hidden;
+  /* アニメーションを少しゆっくりに */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  /* リンクのアンダーラインを削除 */
+  transition: opacity 0.5s ease;
+  /* アニメーションのプロパティと時間を指定 */
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: #fff;
+  transition: transform 0.4s ease;
+}
+ul.thumbnail_list li.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+ul.thumbnail_list li.card:hover {
+  transform: translateY(-1px) scale(1.01);
+  /* ホバー時に上に動き、少し拡大する */
+  transition: transform 0.4s ease;
+  /* アニメーションを少しゆっくりに */
+}
+
+.card {
+  text-decoration: none;
+  /* リンクのアンダーラインを削除 */
+  transition: opacity 0.5s ease;
+  /* アニメーションのプロパティと時間を指定 */
+  display: inline-block;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+/*thumbnailcard*/
+ul.thumbnail_list li.card {
+  margin: 0px 8px 0px 0px !important;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+  /* アニメーションを少しゆっくりに */
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+  flex: 1;
+  display: flex;
+}
+
+ul.thumbnail_list li.card:hover {
+  transform: translateY(-1px) scale(1.01);
+  /* ホバー時に上に動き、少し拡大する */
+  transition: transform 0.4s ease;
+  /* アニメーションを少しゆっくりに */
+}
+a.link {
+  display: inline-block;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

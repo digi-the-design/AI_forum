@@ -1,0 +1,76 @@
+/*section*/
+.blog_section {
+  max-width: 1290px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 0 15px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-blend-mode: lighten;
+  /* 背景画像と背景色を明るく合成 */
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+@media (max-width: 768px) {
+  .blog_section {
+    flex-wrap: wrap !important;
+  }
+
+  .blog_container {
+    margin-right: 0px !important;
+  }
+}
+
+/*main*/
+.blog_container {
+  max-width: 940px;
+  width: 100%;
+  margin-right: 20px;
+  padding: 0px;
+  /*display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;*/
+  position: relative;
+}
+/*aside*/
+.r_column {
+  max-width: 300px;
+  width: 100%;
+  margin: 0;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .r_column {
+    max-width: 100%;
+    width: 100%;
+    padding: 0px;
+  }
+}
+
+.r_column > div {
+  margin-bottom: 36px;
+  width: 100%;
+  height: auto;
+}
+
+.r_column h3 {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #5bb4c6;
+  /*background: linear-gradient(to right, #5bb4c6, #c45bc6);*/
+  color: #fff;
+  /*border-radius: 3px;*/
+}
+/***/

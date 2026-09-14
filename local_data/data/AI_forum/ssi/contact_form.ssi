@@ -1,0 +1,15 @@
+    <section class="contact_form">
+        <a href="/website/AI_forum/form.shtml#">
+            <div class="contact_form_container">
+                <div class="contact">
+                    <p>人工知能フォーラムに関するお問合せ、<br>人工知能に関するイベント等の企画など受け付けております。<br>ご興味のある方はお気軽にお問い合わせください。<br></p>
+                </div>
+                <div class="form">
+                    <!--<h5 class="js_typing"></h5>-->
+                    <button class="btnlinestretches2">人工知能フォーラムに関する<br class="pc sp">お問い合わせ</button>
+                </div>
+            </div>
+        </a>
+    </section>
+    <div class="scroll-to-top"><a href="#"><img src="/website/AI_forum/img/scroll.png" width="80px" height="auto" alt="Scroll To Top"></a>
+    </div>

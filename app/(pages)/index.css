@@ -1,0 +1,19 @@
+.text_container p:first-child {
+  margin: 0px auto 48px auto !important;
+}
+.text_container p {
+  font-weight: 300;
+  position: relative;
+  margin: 48px auto 48px auto;
+  line-height: 2.4em;
+}
+.text_container .image_block {
+  padding: 0px;
+}
+
+.text_container .image_block img {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,112 @@
+.blog_navigation {
+  margin-bottom: 54px;
+}
+@media (min-width: 769px) {
+  /*breadcrumb*/
+  .blog_navigation {
+    width: 100%;
+    height: auto;
+    /*margin-bottom: 72px;*/
+    padding: 0px;
+    background-color: #fff;
+    color: #333;
+  }
+  .blog_navigation .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #5bb4c6;
+  }
+
+  /* 任意：スクロールバーを非表示にして見た目をすっきりさせる場合 */
+  .blog_navigation .breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .blog_navigation .breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #5bb4c6;
+    overflow-x: auto; /* 横方向にはみ出た分をスクロール */
+    white-space: nowrap; /* 文字を絶対に改行させない */
+    -webkit-overflow-scrolling: touch; /* iOSでのスクロールを滑らかにする */
+  }
+
+  /* 任意：スクロールバーを非表示にして見た目をすっきりさせる場合 */
+  .blog_navigation .breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+}
+.blog_navigation .breadcrumb li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 10px;
+  margin-left: -10px;
+  line-height: normal;
+  font-size: 14px;
+  margin-right: 0px;
+  background-color: #5bb4c6;
+  width: auto;
+  white-space: nowrap;
+}
+.blog_navigation .breadcrumb li:has(a:hover) {
+  color: #fff;
+  background-color: #238fa4;
+}
+.blog_navigation .breadcrumb li:not(:last-child)::before,
+.breadcrumb li:not(:last-child)::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  content: "";
+  z-index: 1;
+}
+
+.blog_navigation .breadcrumb li:not(:last-child)::before {
+  right: 0;
+  border-left: 10px solid #fff;
+}
+
+.blog_navigation .breadcrumb li:not(:last-child)::after {
+  right: 1px;
+  border-left: 10px solid #5bb4c6;
+}
+
+.blog_navigation .breadcrumb li:has(a:hover)::before {
+  right: 0;
+  border-left: 10px solid #fff;
+}
+.blog_navigation .breadcrumb li:has(a:hover)::after {
+  right: 1px;
+  border-left: 10px solid #238fa4;
+}
+
+.blog_navigation .breadcrumb li a,
+.blog_navigation .breadcrumb li a:active,
+.blog_navigation .breadcrumb li a:visited {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 6px 12px 6px 25px;
+  font-weight: 300;
+}
+
+.blog_navigation .breadcrumb li:not(:has(a)) {
+  padding: 6px 12px 6px 25px;
+  background-color: #5bb4c6;
+  width: 100%;
+  font-weight: 300;
+}
