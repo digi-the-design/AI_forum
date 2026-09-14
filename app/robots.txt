@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://nextjs-website-lhx7bm49n-rikiyas-projects.vercel.app/sitemap.xml

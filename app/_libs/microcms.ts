@@ -1,151 +1,166 @@
+// ⬛︎ microCMS SDKを使用して、APIからデータを取得するcreateClient関数を定義
 import { createClient } from "microcms-js-sdk";
+// microcms-js-sdkからインポートした型定義
 import type {
   MicroCMSQueries,
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
 
-export type Category = {
-  id: string;
-  name: string;
-  slug?: string;
-} & MicroCMSListContent;
-
-export type Member = {
-  id: string;
-  name: string;
-  position: string;
-  profile: string;
-  image: MicroCMSImage;
-  slug?: string;
-} & MicroCMSListContent;
-
+// ⬛︎ TypeScript型定義
+// News型定義
 export type News = {
   id: string;
   title: string;
-  headline?: string;
-  description?: string;
-  content: string;
-  thumbnail?: MicroCMSImage;
-  category?: Category;
-  categories?: Category[];
-  members?: Member;
+  headline: string;
+  category: Category;
   publishedAt: string;
   createdAt: string;
-  slug?: string;
-  name?: string;
+  description?: string; // 追加: 説明文
+  thumbnail?: MicroCMSImage; // 追加: 画像
+  categories?: Category[];
+  members?: {
+    name: string;
+    image?: { url: string };
+    slug: string;
+  }; // 追加: 投稿者情報
+  content: string;
+  image?: { url: string; name: string; slug: string };
+  slug: string; // 追加: 投稿者情報
+  name: string;
   indicator?: string;
 } & MicroCMSListContent;
+//　以下NewList/index.tsxで使用している引数名articleと各キープロパティ
+// article.id
+// article.title
+// article.category
+// article.publishedAt
+// article.createdAt
 
-const serviceDomain = process.env.NEXT_PUBLIC_MICROCMS_SERVICE;
-const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
+// Member型定義
+export type Member = {
+  id: string;
+  title: string;
+  category: Category;
+  publishedAt: string;
+  createdAt: string;
+  description?: string; // 追加: 説明文
+  thumbnail?: MicroCMSImage; // 追加: 画像
+  categories?: Category[];
+  name: string;
+  position: string;
+  profile: string;
+  members?: {
+    name: string;
+    image?: { url: string };
+    slug: string;
+  }; // 追加: 投稿者情報
+  slug: string; // 追加: 投稿者情報
+  content: string;
+  image?: { url: string; name: string; slug: string };
+} & MicroCMSListContent;
 
-if (!serviceDomain) {
+// Category型定義
+export type Category = {
+  name: string;
+  id: string;
+  slug: string;
+} & MicroCMSListContent;
+
+// ⬛︎ .env.local APIドメイン&キー/エラーチェック
+// .env.localファイルから環境変数DOMAINを取得し、必要な環境変数が存在しない場合はエラーをスロー
+if (!process.env.NEXT_PUBLIC_MICROCMS_SERVICE) {
   throw new Error("NEXT_PUBLIC_MICROCMS_SERVICE is required");
 }
-if (!apiKey) {
-  throw new Error("NEXT_PUBLIC_MICROCMS_API_KEY is required");
-}
-
+// createClient関数を使用して、microCMSクライアント（ドメイン/APIキー）を作成し格納
 export const client = createClient({
-  serviceDomain,
-  apiKey,
+  serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_SERVICE,
+  apiKey: process.env.NEXT_PUBLIC_MICROCMS_API_KEY,
 });
 
+// ⬛︎ APIからニュース記事リストを取得する関数を定義
 export const getNewsList = async (queries?: MicroCMSQueries) => {
-  return await client.getList<News>({
+  const listData = await client.getList<News>({
     endpoint: "news",
-    queries: {
-      fields: "id,title,headline,thumbnail,category,categories,publishedAt,createdAt,description,members",
-      ...queries,
-    },
+    queries,
+    // customRequestInit: { cache: "no-store",}, キャッシュを使用しないで最新の更新データを使用する
   });
+  return listData;
 };
-
+// ⬛︎ APIからブログ記事の「詳細1件」を取得する関数
 export const getNewsDetail = async (
   contentId: string,
   queries?: MicroCMSQueries,
 ) => {
-  return await client.getListDetail<News>({
-    endpoint: "news",
-    contentId,
-    queries: {
-      fields: "id,title,headline,content,thumbnail,category,categories,publishedAt,createdAt,description,members",
-      ...queries,
-    },
+  const detailData = await client.getListDetail<News>({
+    endpoint: "news", //microcmsからどのデータを取るか
+    contentId, //取得する記事のID
+    queries, //APIのクエリパラメータを追加取得（fields, draftKey...）
   });
+  return detailData;
 };
 
+// ⬛︎ APIからブログ記事リストを取得する関数を定義
 export const getBlogList = async (queries?: MicroCMSQueries) => {
-  return await client.getList<News>({
+  const listData = await client.getList<News>({
     endpoint: "blog",
-    queries: {
-      fields: "id,title,headline,thumbnail,category,categories,publishedAt,createdAt,description,members",
-      ...queries,
-    },
+    queries,
+    // customRequestInit: { cache: "no-store",}, キャッシュを使用しないで最新の更新データを使用する
   });
+  return listData;
 };
-
+// ⬛︎ APIからブログ記事の「詳細1件」を取得する関数
 export const getBlogDetail = async (
   contentId: string,
   queries?: MicroCMSQueries,
 ) => {
-  return await client.getListDetail<News>({
-    endpoint: "blog",
-    contentId,
-    queries: {
-      fields: "id,title,headline,content,thumbnail,category,categories,publishedAt,createdAt,description,members",
-      ...queries,
-    },
+  const detailData = await client.getListDetail<News>({
+    endpoint: "blog", //microcmsからどのデータを取るか
+    contentId, //取得する記事のID
+    queries, //APIのクエリパラメータを追加取得（fields, draftKey...）
   });
+  return detailData;
 };
 
+// ⬛︎ APIからカテゴリのリストを取得する関数を定義
 export const getCategoryList = async (queries?: MicroCMSQueries) => {
-  return await client.getList<Category>({
+  const listData = await client.getList<Category>({
     endpoint: "categories",
     queries,
   });
+  return listData;
 };
-
+// ⬛︎ カテゴリ1件取得
 export const getCategoryDetail = async (contentId: string) => {
   return await client.getListDetail<Category>({
     endpoint: "categories",
     contentId,
   });
 };
-
+// ⬛︎ 投稿者のリストを取得する関数を定義
 export const getMembersList = async (queries?: MicroCMSQueries) => {
-  return await client.getList<Member>({
+  const listData = await client.getList({
     endpoint: "members",
     queries,
   });
+  return listData;
 };
-
-export const getMemberDetail = async (
-  contentId: string,
-  queries?: MicroCMSQueries,
-) => {
-  return await client.getListDetail<Member>({
+// ⬛︎ 投稿者の詳細を取得する関数を定義
+export const getMembersDetail = async (contentId: string) => {
+  const detailData = await client.get({
     endpoint: "members",
     contentId,
-    queries,
   });
+  return detailData;
 };
-
-export const getAllNewsList = async () => {
-  return (await getNewsList({ limit: 100 })).contents;
-};
-
-export const getAllCategoryList = async () => {
-  return (await getCategoryList({ limit: 100 })).contents;
-};
-
-export const getMembersDetail = async (slug: string) => {
-  const list = await getMembersList({ filters: `slug[equals]${slug}`, limit: 1 });
-  return list.contents[0] ?? null;
-};
-
-export const getBlogsByMember = async (slug: string) => {
-  const list = await getBlogList({ filters: `members[equals]${slug}`, limit: 100 });
-  return list.contents;
+// ⬛︎ 投稿者が投稿したブログ記事のリストを取得する関数を定義
+export const getBlogsByMember = async (memberId: string) => {
+  const data = await client.getList({
+    endpoint: "blog",
+    queries: {
+      filters: `members[equals]${memberId}`,
+      limit: 100,
+    },
+  });
+  return data.contents;
 };

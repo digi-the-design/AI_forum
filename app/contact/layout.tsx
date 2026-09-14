@@ -1,18 +1,7 @@
-import type { Metadata } from "next";
 import styles from "./page.module.css";
 import Hero from "@/app/_components/Hero_A";
 import PageContents from "@/app/_components/PageContents";
-
-export const metadata: Metadata = {
-  title: "CONTACT | お問い合わせ",
-  description: "人工知能フォーラムに関するお問い合わせフォームです。",
-};
-
-export default function ContactLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ContactLayout({ children }) {
   return (
     <>
       <Hero
@@ -29,7 +18,7 @@ export default function ContactLayout({
           <div className={styles.form_input_block}>
             <div className={styles.form_block}>{children}</div>
           </div>
-        </section>
+        </section>{" "}
       </PageContents>
     </>
   );

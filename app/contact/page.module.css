@@ -710,13 +710,3 @@ select#gender {
   background: rgba(0, 0, 0, 0.3); /* brightness(.7) 相当 */
   z-index: 1;
 }
-.text {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-@media (max-width: 640px) {
-  .text {
-    text-align: left;
-  }
-}
