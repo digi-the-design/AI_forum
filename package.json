@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-website-sample-main_javascript",
+  "name": "nextjs-website-main",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,32 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^7.3.1",
-    "@fortawesome/free-solid-svg-icons": "^7.3.1",
-    "@fortawesome/react-fontawesome": "^3.5.0",
-    "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.9.1",
-    "@vercel/blob": "^2.8.0",
-    "@vis.gl/react-google-maps": "^1.9.0",
     "classnames": "^2.5.1",
-    "dayjs": "^1.11.20",
-    "html-react-parser": "^6.0.1",
-    "keen-slider": "^6.8.6",
-    "microcms-js-sdk": "^3.4.0",
-    "next": "16.3",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-intersection-observer": "^10.0.2",
-    "react-particles": "^2.12.2",
-    "swiper": "^12.1.0",
-    "tsparticles": "^3.9.1"
+    "next": "16.0.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
     "@types/node": "24.10.1",
     "@types/react": "19.2.7",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1",
-    "typescript": "5.9.3"
+    "eslint-config-next": "16.0.1"
   }
 }

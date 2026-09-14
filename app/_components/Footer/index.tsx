@@ -24,7 +24,7 @@ export default function Footer() {
               <p>0120-345-6789</p>
             </div>
             <div className={styles.sns_block}>
-              <SnsIcon variant="footer_sns" />
+              <SnsIcon variant="footer_sns" url="" title="" />
             </div>
           </div>
           <div className={styles.link_block}>

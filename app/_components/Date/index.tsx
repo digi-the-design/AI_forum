@@ -5,13 +5,17 @@ import { formatDate } from "@/app/_libs/utils";
 type Props = {
   date: string;
 };
+
 //dateプロパティをデストラクチャリング（分割代入）の構文{ date }で抽出し、string型の変数date作成
 export default function Date({ date }: Props) {
   return (
     <span className={styles.date}>
       {/*<Image src="/clock.svg" alt="" width={16} height={16} priority />*/}
       {/*{ date }変数埋め込み構文 */}
+<<<<<<< HEAD
       {/*{ date }変数埋め込み構文 */}
+=======
+>>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
       {formatDate(date)}
     </span>
   );

@@ -1,13 +1,18 @@
 import { use } from "react";
 import styles from "./index.module.css";
 //TypeScriptカスタム型を別ファイルから定義インポート
+<<<<<<< HEAD
 import { Category as CategoryType } from "@/app/_libs/microcms";
+=======
+import type { Category } from "@/app/_libs/microcms";
+>>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 
 type Props = {
   categories?: CategoryType[] | null;
   variant?: "primary" | "secondary";
 };
 
+<<<<<<< HEAD
 export default function Category({ categories, variant }: Props) {
   const className = variant ? styles[variant] : styles.primary;
 
@@ -36,4 +41,8 @@ export default function Category({ categories, variant }: Props) {
       ))}
     </div>
   );
+=======
+export default function Category({ category }: Props) {
+  return <span className={styles.tag}>{category.name}</span>;
+>>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 }

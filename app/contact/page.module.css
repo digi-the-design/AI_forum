@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*入力フォーム*/
 @media (max-width: 768px) {
   .container {
@@ -710,3 +711,15 @@ select#gender {
   background: rgba(0, 0, 0, 0.3); /* brightness(.7) 相当 */
   z-index: 1;
 }
+=======
+.text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 640px) {
+  .text {
+    text-align: left;
+  }
+}
+>>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
