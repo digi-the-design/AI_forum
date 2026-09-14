@@ -8,10 +8,11 @@ import {
 import styles from "./index.module.css";
 type SnsIconProps = {
   variant: string;
-  url?: string; // ← optional にする
-  title?: string; // ← optional にする
+  url?: string;
+  title?: string;
 };
-export default function SnsIcons({ variant, url, title }) {
+
+export default function SnsIcons({ variant, url = "", title = "" }: SnsIconProps) {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
 
