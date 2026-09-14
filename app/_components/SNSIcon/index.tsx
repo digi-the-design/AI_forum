@@ -8,6 +8,8 @@ import {
 import styles from "./index.module.css";
 type SnsIconProps = {
   variant: string;
+  url?: string; // ← optional にする
+  title?: string; // ← optional にする
 };
 export default function SnsIcons({ variant, url, title }) {
   const encodedUrl = encodeURIComponent(url);
