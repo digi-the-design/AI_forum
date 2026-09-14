@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   description: "人工知能フォーラムに関するお問い合わせフォームです。",
 };
 
-export default function ContactLayout({ children }) {
+export default function ContactLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <Hero
@@ -25,25 +29,8 @@ export default function ContactLayout({ children }) {
           <div className={styles.form_input_block}>
             <div className={styles.form_block}>{children}</div>
           </div>
-        </section>{" "}
+        </section>
       </PageContents>
-import Hero from "@/app/_components/Hero";
-import Sheet from "@/app/_components/Sheet";
-
-// 共通Metadataに追加
-export const metadata = {
-  title: "お問い合わせ",
-};
-
-type Props = {
-  children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: Props) {
-  return (
-    <>
-      <Hero title="Contact" sub="お問い合わせ" />
-      <Sheet>{children}</Sheet>
     </>
   );
 }
