@@ -15,15 +15,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 // ⬛︎ SearchFieldComponent関数 (クライアントコンポーネント)
 export default function SearchField() {
-<<<<<<< HEAD
   // useRouterフックを定数に代入して、ルーターオブジェクトを取得
   const router = useRouter();
   // useSearchParamsフックを使用して、検索結果表示ページで現在の検索キーワード（?q=値）をキャッチする
-=======
   // useRouterフックをを定数に代入して、ルーターオブジェクトを取得
   const router = useRouter();
   // useSearchParamsフックを使用して、検索キーワード（現在のURLのクエリパラメータ）を取得
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
   const searchParams = useSearchParams();
   // ⬛︎ フォームの送信イベント処理関数
   // 引数eはReactのフォームの送信で、currentTargetがHTMLFormElement型であることを保証
@@ -35,7 +32,6 @@ export default function SearchField() {
     const q = e.currentTarget.elements.namedItem("q");
     // qがHTMLInputElementであるかを確認（型安全のため）
     if (q instanceof HTMLInputElement) {
-<<<<<<< HEAD
       const keyword = q.value.trim();
       if (keyword) {
         // ルーターオブジェクトのpushメソッドを使用して、指定されたURLに遷移
@@ -68,7 +64,6 @@ export default function SearchField() {
         </label>
       </form>
     </>
-=======
       // 定数paramsにインスタンス化したURLSearchParams()を代入し、クエリパラメータを設定
       const params = new URLSearchParams();
       // 定数paramsにset()メソッドで、クエリパラメータ"q"に、trim()された入力フィールドの値を設定
@@ -97,6 +92,5 @@ export default function SearchField() {
         />
       </label>
     </form>
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
   );
 }

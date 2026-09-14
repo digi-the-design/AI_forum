@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Link from "next/link";
 import styles from "./index.module.css";
 import { PAGENATION_LIMIT } from "@/app/_constans";
@@ -93,7 +92,6 @@ export default function Pagination({
               </Link>
             ) : (
               /* B:現在のページ：リンクなし装飾付き */
-=======
 import { NEWS_LIST_LIMIT } from "@/app/_constants";
 import Link from "next/link";
 import styles from "./index.module.css";
@@ -130,12 +128,10 @@ export default function Pagination({
                 {p}
               </Link>
             ) : (
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
               <span className={`${styles.item} ${styles.current}`}>{p}</span>
             )}
           </li>
         ))}
-<<<<<<< HEAD
         {current < pagerList && (
           /* 次のページ：リンクあり装飾なし */
           <li>
@@ -144,8 +140,6 @@ export default function Pagination({
             </Link>
           </li>
         )}
-=======
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
       </ul>
     </nav>
   );

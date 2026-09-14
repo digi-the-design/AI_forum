@@ -1,6 +1,5 @@
 "use server"; // ServerActionsを使用するための宣言
 
-<<<<<<< HEAD
 // ⬛︎ 全体の流れ
 // ①interface ContactFormDataで先にプロパティ名とデータ型定義を作成
 // ②createContactData()関数処理
@@ -61,7 +60,6 @@ export async function createContactData(_prevState: any, formData: FormData) {
     `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
     {
       method: "POST",
-=======
 // ⬛︎ メールアドレスの形式が有効かどうかを検証する関数
 // 受け取ったemailが正しい形式である場合はtrueを返し、そうでない場合はfalseを返す
 // 正規表現を変数patternに格納し、test(引数)メソッドを使用して、emailが正規表現に一致するかどうかを判定する
@@ -144,13 +142,11 @@ export async function createContactData(_prevState: any, formData: FormData) {
       // methodをPOSTに設定
       method: "POST",
       // headersにContent-Typeを設定
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
       headers: {
         "Content-Type": "application/json",
       },
 
       // ⬛︎ HubSpotのフォームに送信するためのデータを設定
-<<<<<<< HEAD
       body: JSON.stringify({
         fields: [
           {
@@ -169,7 +165,6 @@ export async function createContactData(_prevState: any, formData: FormData) {
             name: "seibetsu",
             value: rawFormData.seibetsu,
           },
-=======
       // body（fetchメソッドの持つプロパティ名）の値にJSON形式で送信するデータを設定
       // stringify()メソッドでJavaScriptオブジェクトをJSON文字列に変換
       body: JSON.stringify({
@@ -192,13 +187,11 @@ export async function createContactData(_prevState: any, formData: FormData) {
             value: rawFormData.firstname,
           },
           // 会社名
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
           {
             objectTypeId: "0-1",
             name: "company",
             value: rawFormData.company,
           },
-<<<<<<< HEAD
           {
             objectTypeId: "0-1",
             name: "zip",
@@ -224,23 +217,18 @@ export async function createContactData(_prevState: any, formData: FormData) {
             name: "phone",
             value: rawFormData.phone,
           },
-=======
           // メールアドレス
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
           {
             objectTypeId: "0-1",
             name: "email",
             value: rawFormData.email,
           },
-<<<<<<< HEAD
           {
             objectTypeId: "0-1",
             name: "category",
             value: rawFormData.category.join(";"),
           },
-=======
           // メッセージ
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
           {
             objectTypeId: "0-1",
             name: "message",
@@ -251,7 +239,6 @@ export async function createContactData(_prevState: any, formData: FormData) {
     },
   );
 
-<<<<<<< HEAD
   // ⬛︎ try-catch文を使用して、エラーチェック
   try {
     // fetchリクエストの結果をjson形式で取得
@@ -259,7 +246,6 @@ export async function createContactData(_prevState: any, formData: FormData) {
   } catch (e) {
     // エラーが発生した場合はエラーメッセージを返す
     console.log(e);
-=======
   // ⬛︎ try-catch文を使用して、fetchリクエストの結果をjson形式で取得し、エラーが発生した場合はエラーメッセージを返す
   try {
     // result.json()で、fetchリクエストの結果をjson形式で取得する
@@ -269,7 +255,6 @@ export async function createContactData(_prevState: any, formData: FormData) {
     // コンソールに出力
     console.log(e);
     // エラーメッセージを返す
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
     return {
       status: "error",
       message: "お問い合わせに失敗しました",

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*入力フォーム*/
 @media (max-width: 768px) {
   .container {
@@ -722,7 +721,6 @@ select#gender {
 .global_error p {
   margin: 0;
   font-weight: bold;
-=======
 .form {
   max-width: 600px;
   margin: 0 auto;
@@ -795,5 +793,4 @@ select#gender {
   .success {
     text-align: left;
   }
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 }

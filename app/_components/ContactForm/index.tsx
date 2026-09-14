@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 // ⬛︎ Next.js/ReactHook
 // useRouter（Next.js）:指定ページに遷移
@@ -640,7 +639,6 @@ export default function ContactForm() {
         >
           確認
         </button>
-=======
 "use client"; // ClientComponentを使用するための宣言
 // Google_GA4
 import { sendGAEvent } from "@next/third-parties/google";
@@ -759,7 +757,6 @@ export default function ContactForm() {
           <p className={styles.error}>{state.message}</p>
         )}
         <input type="submit" value="送信する" className={styles.button} />
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
       </div>
     </form>
   );

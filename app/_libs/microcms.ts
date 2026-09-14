@@ -1,10 +1,7 @@
 // ⬛︎ microCMS SDKを使用して、APIからデータを取得するcreateClient関数を定義
 import { createClient } from "microcms-js-sdk";
-<<<<<<< HEAD
 // microcms-js-sdkからインポートした型定義
-=======
 // MicroCMSQueries, MicroCMSImage, MicroCMSListContentは、microcms-js-sdkからインポートした型定義
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 import type {
   MicroCMSQueries,
   MicroCMSImage,
@@ -12,7 +9,6 @@ import type {
 } from "microcms-js-sdk";
 
 // ⬛︎ TypeScript型定義
-<<<<<<< HEAD
 // News型定義
 export type News = {
   id: string;
@@ -35,7 +31,6 @@ export type News = {
   name: string;
   indicator?: string;
 } & MicroCMSListContent;
-=======
 // Member型定義
 export type Member = {
   name: string;
@@ -58,7 +53,6 @@ export type News = {
   thumbnail?: MicroCMSImage;
   category?: Category;
 } & MicroCMSListContent; // News型は、title, description, content, categoryプロパティを持ち、さらにMicroCMSListContent型のプロパティも含む
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 //　以下NewList/index.tsxで使用している引数名articleと各キープロパティ
 // article.id
 // article.title
@@ -67,7 +61,6 @@ export type News = {
 // article.thumbnail
 // article.category
 
-<<<<<<< HEAD
 // Member型定義
 export type Member = {
   id: string;
@@ -119,7 +112,6 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 // ⬛︎ APIからブログ記事の「詳細1件」を取得する関数
-=======
 // .env.localファイルから環境変数DOMAINを取得し、必要な環境変数が存在しない場合はエラーをスロー
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -185,17 +177,14 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
 };
 
 // ⬛︎ APIからニュース記事の「詳細1件」を取得する関数
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 export const getNewsDetail = async (
   contentId: string,
   queries?: MicroCMSQueries,
 ) => {
-<<<<<<< HEAD
   const detailData = await client.getListDetail<News>({
     endpoint: "news", //microcmsからどのデータを取るか
     contentId, //取得する記事のID
     queries, //APIのクエリパラメータを追加取得（fields, draftKey...）
-=======
   // 💡 Next.js 16: 下書き(draftKey)がない通常時のみ関数ごとキャッシュする
   if (queries?.draftKey === undefined || queries?.draftKey === "") {
     ("use cache");
@@ -219,12 +208,10 @@ export const getNewsDetail = async (
       // depth（リレーションの深さ）
       // ids（複数 ID 指定）
     },
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
   });
   return detailData;
 };
 
-<<<<<<< HEAD
 // ⬛︎ APIからブログ記事リストを取得する関数を定義
 export const getBlogList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<News>({
@@ -288,7 +275,6 @@ export const getBlogsByMember = async (memberId: string) => {
     },
   });
   return data.contents;
-=======
 // ⬛︎ APIからカテゴリーのリストを取得する関数を定義（100件まで）
 export const getCategoryList = async (
   contentId: string,
@@ -336,5 +322,4 @@ export const getAllCategoryList = async () => {
   });
 
   return listData;
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 };

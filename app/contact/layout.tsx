@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import Hero from "@/app/_components/Hero_A";
@@ -28,7 +27,6 @@ export default function ContactLayout({ children }) {
           </div>
         </section>{" "}
       </PageContents>
-=======
 import Hero from "@/app/_components/Hero";
 import Sheet from "@/app/_components/Sheet";
 
@@ -46,7 +44,6 @@ export default function RootLayout({ children }: Props) {
     <>
       <Hero title="Contact" sub="お問い合わせ" />
       <Sheet>{children}</Sheet>
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
     </>
   );
 }

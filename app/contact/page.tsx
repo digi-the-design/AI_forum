@@ -1,11 +1,9 @@
 import ContactForm from "@/app/_components/ContactForm";
-<<<<<<< HEAD
 export default function Page() {
   return (
     <>
       <ContactForm />
     </>
-=======
 import styles from "./page.module.css";
 
 export default function Page() {
@@ -18,6 +16,5 @@ export default function Page() {
       </p>
       <ContactForm />
     </div>
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
   );
 }

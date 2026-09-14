@@ -23,7 +23,6 @@ export default function NewsList({ news }: Props) {
     return <p>記事がありません</p>;
   }
   return (
-<<<<<<< HEAD
     <div className={styles.news}>
       <div className={styles.information_block}>
         <div className={styles.information_title}>
@@ -31,7 +30,6 @@ export default function NewsList({ news }: Props) {
             <div className={styles.inner_block}>
               <h2>NEWS</h2>
             </div>{" "}
-=======
     <ul>
       {news.map((article) => (
         <li key={article.id} className={styles.list}>
@@ -65,7 +63,6 @@ export default function NewsList({ news }: Props) {
                 </dd>
               </dl>
             </div>
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
           </Link>
         </div>
 

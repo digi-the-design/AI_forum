@@ -12,10 +12,7 @@ export default function Date({ date }: Props) {
     <span className={styles.date}>
       {/*<Image src="/clock.svg" alt="" width={16} height={16} priority />*/}
       {/*{ date }変数埋め込み構文 */}
-<<<<<<< HEAD
       {/*{ date }変数埋め込み構文 */}
-=======
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
       {formatDate(date)}
     </span>
   );

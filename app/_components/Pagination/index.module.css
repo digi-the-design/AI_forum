@@ -23,7 +23,6 @@
   color: var(--color-text-unpainted);
   background-color: var(--color-button-primary);
 }
-<<<<<<< HEAD
 .navgation {
   display: flex;
   justify-content: center;
@@ -31,5 +30,3 @@
   gap: 8px;
   width: 100%;
 }
-=======
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Image from "next/image";
 import type { News } from "@/app/_libs/microcms";
 import Category from "@/app/_components/Category";
@@ -7,7 +6,6 @@ import SnsIcon from "@/app/_components/SNSIcon";
 import styles from "./index.module.css";
 import parse from "html-react-parser";
 import ButtonLink from "@/app/_components/ButtonLink";
-=======
 import Link from "next/link";
 import Image from "next/image";
 import type { News } from "@/app/_libs/microcms";
@@ -15,13 +13,11 @@ import Date from "../Date";
 import Category from "../Category";
 import styles from "./index.module.css";
 import parse from "html-react-parser";
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
 type Props = {
   data: News;
 };
 
 export default function Article({ data }: Props) {
-<<<<<<< HEAD
   const { members } = data;
   return (
     <div className={styles.content_block}>
@@ -56,7 +52,6 @@ export default function Article({ data }: Props) {
         </div>
       </div>
     </div>
-=======
   return (
     <main>
       <h1 className={styles.title}>{data.title}</h1>
@@ -82,6 +77,5 @@ export default function Article({ data }: Props) {
       {/* 不正なHTMLアクセスの可能性があることを警告している。dagerouslySetInnerHTML */}
       <div className={styles.content}>{parse(data.content)}</div>
     </main>
->>>>>>> 40c3be1403b976f1fb3415aeb900f6c88a98bf4a
   );
 }
