@@ -6,3 +6,4 @@ export const PAGENATION_LIMIT = 10; // ⬛︎ ページャーの最大数を定�
 export const NEWS_LIST_LIMIT = 7; // ⬛︎ ニュース記事一覧ページで表示する記事の最大数を定義
 export const BLOG_THUMBNAIL_LIST = 3; // ⬛︎ ブログ記事のサムネイルに表示する記事の最大数を定義
 export const NEWS_LIST = 10; // ⬛︎ BLOG記事一覧ページで表示する記事の最大数を定義
+export const MEMBERS_LIST_LIMIT = 12; // ⬛︎ メンバー一覧ページで表示する最大数を定義
