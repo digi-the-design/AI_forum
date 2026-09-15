@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   title: "NEWS | 新着ニュース記事一覧",
 };
 
-export const revalidate = 0;
-
 export default function RootLayout({ children }: NewsLayoutProps) {
   return (
     <>

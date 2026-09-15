@@ -8,6 +8,8 @@ import { Noto_Sans_JP } from "next/font/google";
 import localFont from "next/font/local";
 import PageTransition from "@/app/_components/PageTransition";
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   title: {
