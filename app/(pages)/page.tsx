@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import styles from "@/app/page.module.css";
 import NewsList from "@/app/_components/NewsList";
 import AdditionalSection from "@/app/_components/AdditionalSection";
 import TopMessage from "@/app/_components/TopMessage";
 import { getNewsList } from "@/app/_libs/microcms";
 import { NEWS_LIST_LIMIT } from "@/app/_constans";
+
+const posterImg = "/img/thumbnail-01.jpg";
 
 export const metadata: Metadata = {
   title: "人工知能フォーラム | AI_FORUM",
@@ -29,6 +32,15 @@ export default async function Home() {
           <h1 className={styles.title}>AI_{name}を考える</h1>
           <p className={styles.description}>Think about AI</p>
         </div>
+        <Image
+          src={posterImg}
+          alt="メインビジュアル"
+          fill
+          priority // ← これが超重要！最優先でダウンロードされLCPが劇的に改善します
+          sizes="100vw"
+          className="object-cover z-0"
+        />
+
         <video
           className={styles.bgimg}
           src="https://5syi392zikxrmvgw.public.blob.vercel-storage.com/tokyo.mp4"
