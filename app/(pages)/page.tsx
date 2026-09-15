@@ -47,6 +47,7 @@ export default async function Home() {
           autoPlay
           loop
           muted
+          preload="none" // ← これを追加！(または "metadata")
           playsInline
           poster="/img/thumbnail-01.jpg"
         />
