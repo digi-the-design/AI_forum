@@ -8,7 +8,7 @@ import {
 
 // Sitemap用URL生成
 const buildUrl = (path = "") =>
-  `https://ai-forum-ieukkpdns-rikiyas-projects.vercel.app/${path ?? ""}`;
+  `https://ai-forum-ieukkpdns-rikiyas-projects.vercel.app${path ?? ""}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [blogResponse, newsResponse, categoryResponse, memberResponse] =
