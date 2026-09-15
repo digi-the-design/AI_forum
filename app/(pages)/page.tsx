@@ -48,6 +48,7 @@ export default async function Home() {
           loop
           muted
           playsInline
+          poster="/img/thumbnail-01.jpg"
         />
         <div className={styles.overlay}></div>
       </section>
