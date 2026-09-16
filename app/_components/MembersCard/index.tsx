@@ -26,6 +26,7 @@ export default function MembersCard({ data }) {
           width={400}
           height={225}
           style={{ width: "100%", height: "auto", aspectRatio: "16 / 9" }}
+          loading="lazy"
         />
       </div>
       <div className={styles.content}>

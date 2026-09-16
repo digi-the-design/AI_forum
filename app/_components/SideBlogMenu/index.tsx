@@ -19,6 +19,7 @@ export default function SideBlogMenu({ data }: Props) {
             width={110}
             height={80}
             style={{ width: "auto", height: "auto", aspectRatio: "16 / 9" }}
+            loading="lazy"
           />
         </div>
         <div className={styles.content}>

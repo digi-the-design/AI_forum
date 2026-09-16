@@ -20,6 +20,7 @@ export default async function SideColumn() {
             alt="Rectangle Banner"
             width={300}
             height={250}
+            loading="lazy"
           />
         </div>
         <div>
@@ -28,6 +29,7 @@ export default async function SideColumn() {
             alt="Banner 01"
             width={300}
             height={100}
+            loading="lazy"
           />
         </div>
         <div>
@@ -36,6 +38,7 @@ export default async function SideColumn() {
             alt="Banner 02"
             width={300}
             height={100}
+            loading="lazy"
           />
         </div>
       </div>

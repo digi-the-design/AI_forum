@@ -51,6 +51,7 @@ export default function ScrollTopButton() {
         width={80}
         height={80}
         alt="Scroll To Top"
+        loading="lazy"
       />
     </button>
   );

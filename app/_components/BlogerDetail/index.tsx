@@ -25,6 +25,7 @@ export default function BlogerDetail({ data }: Props) {
             width={200}
             height={100}
             style={{ width: "50%", height: "auto", aspectRatio: "16 / 9" }}
+            loading="lazy"
           />{" "}
           <div className={styles.title_block}>
             <h2>{data.name}</h2>

@@ -11,9 +11,7 @@ type Props = {
   data: News;
 };
 export default function BlogCard({ data }: Props) {
-  const {
-    members,
-  } = data;
+  const { members } = data;
   const router = useRouter();
 
   //const { titleRef, imgRef, titlePlayed, imgPlayed } = useScrollAnimation();
@@ -35,6 +33,7 @@ export default function BlogCard({ data }: Props) {
           width={400}
           height={225}
           style={{ width: "100%", height: "auto", aspectRatio: "16 / 9" }}
+          loading="lazy"
         />
       </div>
       <div className={styles.content}>

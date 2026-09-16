@@ -25,6 +25,7 @@ export default function Article({ data }: Props) {
             width={400}
             height={225}
             style={{ width: "100%", height: "auto", aspectRatio: "16 / 9" }}
+            loading="lazy"
           />
         </div>
         <div className={styles.title_block}>

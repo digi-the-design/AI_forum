@@ -15,7 +15,7 @@ export default function AdditionalSection({
   //useScrollAnimationフックが返すオブジェクトから各Refと各Playedの状態を分割代入で取得
   //Refはobserveブロックの参照先、Playedはアニメーションが再生されたかどうかの状態
   //const { titleRef, textRef, imgRef, titlePlayed, textPlayed, imgPlayed } =
-    //useScrollAnimation();
+  //useScrollAnimation();
   return (
     <section className={styles.additional_section}>
       {/* 見出しブロック */}
@@ -80,6 +80,7 @@ export default function AdditionalSection({
               alt={title_ja}
               width={800}
               height={600}
+              loading="lazy"
             />
           </div>
         </div>

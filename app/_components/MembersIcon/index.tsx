@@ -11,6 +11,7 @@ export default function AuthorIcon({ src, size = 100 }: Props) {
       height={size}
       alt="author icon"
       style={{ clipPath: "circle(50% at 50% 50%)", objectFit: "cover" }}
+      loading="lazy"
     />
   );
 }

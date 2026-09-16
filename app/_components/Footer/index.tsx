@@ -16,6 +16,7 @@ export default function Footer() {
               width={240}
               height={120}
               alt="ロゴ画像"
+              loading="lazy"
             />
             <div className={styles.contact_info}>
               <h4>東京オフィス</h4>

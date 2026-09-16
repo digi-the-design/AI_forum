@@ -62,6 +62,7 @@ export default function TopicsBanner() {
                       height: "auto",
                       aspectRatio: "16 / 9",
                     }}
+                    loading="lazy"
                   />
                 </div>
               </div>

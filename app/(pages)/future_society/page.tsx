@@ -40,6 +40,7 @@ export default function Page() {
               alt="AIの進化を示す画像"
               width={960}
               height={540}
+              loading="lazy"
             />
           </div>
           <p>
@@ -54,6 +55,7 @@ export default function Page() {
               alt="AIの進化の影響を示す画像"
               width={960}
               height={540}
+              loading="lazy"
             />
           </div>
           <p>
