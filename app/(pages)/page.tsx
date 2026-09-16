@@ -43,7 +43,7 @@ export default async function Home() {
 
         <video
           className={styles.bgimg}
-          src="https://5syi392zikxrmvgw.public.blob.vercel-storage.com/tokyo.mp4"
+          src="https://5syi392zikxrmvgw.public.blob.vercel-storage.com/tokyo.webm"
           autoPlay
           loop
           muted
