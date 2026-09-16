@@ -7,7 +7,7 @@ import TopMessage from "@/app/_components/TopMessage";
 import { getNewsList } from "@/app/_libs/microcms";
 import { NEWS_LIST_LIMIT } from "@/app/_constans";
 
-const posterImg = "/img/thumbnail-01.jpg";
+import coverImg from "@/public/img/tokyo.jpg";
 
 export const metadata: Metadata = {
   title: "人工知能フォーラム | AI_FORUM",
@@ -33,7 +33,7 @@ export default async function Home() {
           <p className={styles.description}>Think about AI</p>
         </div>
         <Image
-          src={posterImg}
+          src={coverImg}
           alt="メインビジュアル"
           fill
           priority // ← これが超重要！最優先でダウンロードされLCPが劇的に改善します
