@@ -36,12 +36,10 @@ export default async function Home() {
           src={coverImg}
           alt="メインビジュアル"
           fill
-          loading="lazy"
           priority // ← これが超重要！最優先でダウンロードされLCPが劇的に改善します
           sizes="100vw"
           className="object-cover z-0"
         />
-
         <video
           className={styles.bgimg}
           src="https://5syi392zikxrmvgw.public.blob.vercel-storage.com/tokyo.webm"

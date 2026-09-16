@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/app/_components/Header";
 import Footer from "@/app/_components/Footer";
@@ -7,6 +8,8 @@ import ScrollTopButton from "@/app/_components/ScrollTopButton";
 import { Noto_Sans_JP } from "next/font/google";
 import localFont from "next/font/local";
 import PageTransition from "@/app/_components/PageTransition";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 export const revalidate = 0;
 
@@ -58,6 +61,22 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${noto.className} ${letterGothic.className}`}>
       <body>
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
         <PageTransition />
         <div id="page-marker" style={{ height: 0 }} />
         <ParticlesBackground />
